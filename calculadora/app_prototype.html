@@ -43,29 +43,34 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label>Distancia (Millas)</label>
-                            <input type="number" id="mileage" placeholder="0" value="15">
+                            <input type="number" id="mileage" placeholder="0" value="15" oninput="calculateQuote()">
                         </div>
                         <div class="form-group">
-                            <label>Volumen (Cargas de Traila)</label>
-                            <input type="number" id="volume" placeholder="0" value="1">
+                            <label>Carga (0.2 a 1.0)</label>
+                            <input type="number" id="volume" step="0.1" min="0.2" max="1" value="1"
+                                oninput="calculateQuote()" onclick="this.select()">
+                            <small style="color: #888; display: block; margin-top: 4px;">0.2=Mínimo | 1.0=Full
+                                Trailer</small>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Dificultad / Mano de Obra</label>
-                        <select id="labor-level">
-                            <option value="low">Fácil (Carga rápida)</option>
-                            <option value="med">Media (Desarme de muebles)</option>
-                            <option value="high">Difícil (Limpieza profunda / Pesado)</option>
+                        <label>Condiciones del Lugar</label>
+                        <select id="labor-level" onchange="calculateQuote()">
+                            <option value="low">Fácil (Curb pick-up)</option>
+                            <option value="med">Media (Interior/Desarme)</option>
+                            <option value="high">Difícil (Sótano/Escombro pesado)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Tarifa de Botadero (Extra)</label>
-                        <input type="number" id="dump-fees" placeholder="$0.00" value="75">
+                        <input type="number" id="dump-fees" placeholder="$0.00" value="75" oninput="calculateQuote()">
                     </div>
 
-                    <button class="btn" onclick="calculateQuote()">GENERAR ESTIMADO INSTANTÁNEO</button>
+                    <button class="btn" onclick="sendToWhatsApp()"
+                        style="background-color: #25D366; margin-bottom: 0.5rem;">ENVIAR POR WHATSAPP 📱</button>
+                    <button class="btn" onclick="calculateQuote()">RE-CALCULAR ESTIMADO</button>
                 </div>
             </div>
 
@@ -122,27 +127,48 @@
             const dump = parseFloat(document.getElementById('dump-fees').value) || 0;
             const labor = document.getElementById('labor-level').value;
 
-            // Simple Industrial Logic
-            let baseRate = 150; // Tarifa base por salida
-            if (service === 'roofing') baseRate = 250;
-            if (service === 'scrap') baseRate = 75;
+            // --- Lógica de Mercado Houston 2026 (Precios Justos) ---
 
+            // 1. Tiers de Volumen (Trailer de 14 yardas)
+            // Benchmarks: 1/4 ($150), 1/2 ($275), 3/4 ($450), Full ($650)
+            let tierBase = 150;
+            if (volume > 0.25) tierBase = 275;
+            if (volume > 0.50) tierBase = 450;
+            if (volume > 0.75) tierBase = 650;
+
+            // 2. Multiplicador por Peso/Material
+            let multiplier = 1.0;
+            if (service === 'roofing') multiplier = 1.4; // Shingles son ultra pesados
+            if (service === 'construction') multiplier = 1.2;
+            if (service === 'scrap') multiplier = 0.6; // Descuento por recuperación de valor
+
+            // 3. Logística (Diesel + Tiempo)
+            const mileageCost = miles * 3.25; // Diesel 2026 + desgaste
+
+            // 4. Mano de Obra (Tiers de dificultad)
             let laborCost = 50;
-            if (labor === 'med') laborCost = 100;
-            if (labor === 'high') laborCost = 200;
+            if (labor === 'med') laborCost = 120;
+            if (labor === 'high') laborCost = 280;
 
-            const mileageCost = miles * 2.5; // $2.50 por milla
-            const total = (baseRate * volume) + mileageCost + dump + laborCost;
+            // Cálculo Final
+            const total = (tierBase * multiplier) + mileageCost + dump + laborCost;
 
             // Update UI
             document.getElementById('total-quote').innerText = `$${total.toFixed(2)}`;
-            document.getElementById('base-breakdown').innerText = `$${(baseRate * volume + laborCost).toFixed(2)}`;
+            document.getElementById('base-breakdown').innerText = `$${(tierBase * multiplier + laborCost).toFixed(2)}`;
             document.getElementById('mileage-breakdown').innerText = `$${mileageCost.toFixed(2)}`;
             document.getElementById('dump-breakdown').innerText = `$${dump.toFixed(2)}`;
 
             // Subtle animation
-            document.getElementById('total-quote').style.transform = 'scale(1.1)';
+            document.getElementById('total-quote').style.transform = 'scale(1.05)';
             setTimeout(() => document.getElementById('total-quote').style.transform = 'scale(1)', 200);
+        }
+
+        function sendToWhatsApp() {
+            const total = document.getElementById('total-quote').innerText;
+            const service = document.getElementById('service-type').options[document.getElementById('service-type').selectedIndex].text;
+            const msg = `H-Town Haul & Harvest %0A---%0AEstimado para: ${service}%0ATotal Sugerido: ${total}%0AGracias por confiar en la Inventiva Cubana! 🚛💎`;
+            window.open(`https://wa.me/?text=${msg}`);
         }
 
         // Initial Calc

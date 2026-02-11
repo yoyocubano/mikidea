@@ -141,6 +141,19 @@ input:focus {
     transition: transform 0.2s ease;
 }
 
+.total-amount {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    /* Responsive scaling */
+    color: var(--highlight);
+    font-weight: 800;
+    margin: 1rem 0;
+    transition: transform 0.2s ease;
+    word-break: break-all;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .btn:active {
     transform: scale(0.98);
 }

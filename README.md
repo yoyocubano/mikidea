@@ -5,6 +5,10 @@ Welcome to the master repository for **H-Town Haul & Harvest**, a premium logist
 ## 📂 Repository Structure
 
 *   **/docs**: Comprehensive business study, legal roadmap, financial planning, and branding constitution.
+    - `/docs`: Guía Legal, Presupuesto, Estrategia Financiera y **La Guía del Cubano**.
+    - `/web`: Landing page industrial y showcase 3D.
+    - `/calculadora`: App **Estimador Pro** refinada (Lógica real Houston 2026).
+    - `/scripts`: Herramientas de automatización y transcripción.
 *   **/web**: Premium landing page and digital branding showcase.
 *   **/calculadora**: "Estimador Pro" – A functional web application prototype for on-the-spot job quoting.
 *   **/scripts**: Automated tools for WhatsApp audio transcription and data processing.
