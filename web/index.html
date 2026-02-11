@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-Town Haul & Harvest | Houston Logistics & Recovery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo-text">H-TOWN <span>HAUL & HARVEST</span></div>
+        <div class="nav-links">
+            <a href="#about">Nosotros</a>
+            <a href="#services">Servicios</a>
+            <a href="#contact">Contacto</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content reveal">
+            <h1>Logística con <span>Fuerza e Inventiva</span></h1>
+            <p>Más que una empresa de transporte, somos tu aliado en la recuperación de activos. Nacidos de la
+                resiliencia cubana, operando con la potencia de Houston.</p>
+            <a href="#contact" class="cta-button">Solicitar Presupuesto</a>
+        </div>
+        <div class="hero-visual reveal">
+            <div class="logo-container" id="logo3d">
+                <img src="../htown_haul_harvest_logo_mockup_1770762934301.png" alt="H-Town Haul & Harvest Logo">
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="section-title reveal">
+            <h2>Nuestra Historia</h2>
+        </div>
+        <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <p style="font-size: 1.1rem; opacity: 0.9;">
+                H-Town Haul & Harvest nace de la "Inventiva" cubana trasladada al dinámico mercado de Houston.
+                Entendemos que en este negocio no solo se transporta chatarra o escombros; se cosecha oportunidad.
+                Nuestra filosofía de "La Lucha" nos impulsa a ir más allá por nuestros clientes, ofreciendo soluciones
+                donde otros ven problemas.
+            </p>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="section-title reveal">
+            <h2>Servicios Especializados</h2>
+        </div>
+        <div class="services-grid">
+            <div class="card reveal">
+                <h3>Renta de Dump Trailers</h3>
+                <p>Equipos de 14ft y 16ft listos para trabajos de techos y construcción. Flexibilidad de entrega y
+                    recogida para que tú no pares.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Recuperación de Activos</h3>
+                <p>Especialistas en subastas de almacenes y rescate de metales de alto valor. Sabemos dónde está el
+                    valor oculto.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Gestión de Residuos</h3>
+                <p>Limpieza profesional de sitios de obra y desalojos. Rapidez, honestidad y limpieza total garantizada.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background: var(--dark-grey);">
+        <div class="section-title reveal">
+            <h2>Contacto</h2>
+        </div>
+        <div style="max-width: 600px; margin: 0 auto;" class="reveal">
+            <p style="text-align: center; margin-bottom: 20px;">¿Tienes un proyecto en Houston? Hablemos.</p>
+            <div style="text-align: center;">
+                <p>📍 Houston, Texas Area</p>
+                <p>📱 Katy • The Woodlands • Sugar Land</p>
+                <br>
+                <a href="#" class="cta-button">Enviar Mensaje</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 H-Town Haul & Harvest. Houston's Strength in Logistics, Your Partner in Recovery.</p>
+    </footer>
+
+    <script>
+        // 3D Hover Effect for Logo
+        const logo = document.getElementById('logo3d');
+        const hero = document.querySelector('.hero');
+
+        hero.addEventListener('mousemove', (e) => {
+            const rect = logo.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (centerY - y) / 10;
+            const rotateY = (x - centerX) / 10;
+
+            logo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            logo.style.transition = 'transform 0.5s ease';
+            logo.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
+
+        hero.addEventListener('mouseenter', () => {
+            logo.style.transition = 'none';
+        });
+    </script>
+</body>
+
+</html>

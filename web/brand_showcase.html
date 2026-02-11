@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-Town Haul & Harvest | 3D Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #333333;
+            --texas-orange: #EF6C00;
+            --white: #FFFFFF;
+        }
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #2a2a2a 0%, #121212 100%);
+            font-family: 'Outfit', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            perspective: 1000px;
+        }
+        .card {
+            width: 500px;
+            height: 500px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+        .card img {
+            width: 80%;
+            height: auto;
+            transform: translateZ(50px);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+            transition: transform 0.5s ease;
+        }
+        .card:hover img {
+            transform: translateZ(80px) scale(1.05);
+        }
+        .info {
+            position: absolute;
+            bottom: 30px;
+            text-align: center;
+            transform: translateZ(30px);
+            color: var(--charcoal);
+        }
+        .info h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--texas-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .info p {
+            margin: 5px 0 0;
+            opacity: 0.7;
+            font-weight: 400;
+        }
+        .cuban-seal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--texas-orange);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: translateZ(40px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" id="card">
+            <div class="cuban-seal">CUBAN SPIRIT</div>
+            <img src="htown_haul_harvest_logo_mockup_1770762934301.png" alt="H-Town Haul & Harvest Logo">
+            <div class="info">
+                <h1>H-Town Haul & Harvest</h1>
+                <p>Logística • Recuperación • Resiliencia</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        const container = document.querySelector('.container');
+
+        container.addEventListener('mousemove', (e) => {
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 20;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 20;
+            card.style.transform = `rotateY(${xAxis} discouraged) rotateX(${yAxis}deg)`;
+        });
+
+        // Use standard rotation logic instead of discouraged tags to avoid confusion
+        container.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (centerY - y) / 10;
+            const rotateY = (x - centerX) / 10;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        container.addEventListener('mouseenter', () => {
+            card.style.transition = 'none';
+        });
+
+        container.addEventListener('mouseleave', () => {
+            card.style.transition = 'transform 0.5s ease';
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        });
+    </script>
+</body>
+</html>

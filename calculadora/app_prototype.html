@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-Town Estimator | Dashboard</title>
+    <link rel="stylesheet" href="app_styles.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-text" style="padding: 0 1rem 2rem 1rem;">
+            H-TOWN <span>HAUL.</span>
+        </div>
+        <div class="nav-item active">📋 Calculadora</div>
+        <div class="nav-item">🚛 Flota (Trailers)</div>
+        <div class="nav-item">💎 Harvest (Scrap)</div>
+        <div class="nav-item">📈 Finanzas</div>
+        <div class="nav-item">⚙️ Configuración</div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h2>Calculador de Estimados Pro</h2>
+            <div id="current-time" style="color: var(--text-dim);">Houston, TX | --:--</div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-title">Detalles del Trabajo</div>
+                <div class="form-container">
+                    <div class="form-group">
+                        <label>Tipo de Servicio</label>
+                        <select id="service-type">
+                            <option value="junk">Junk Removal (Carga General)</option>
+                            <option value="construction">Escombro de Construcción</option>
+                            <option value="roofing">Roofing Drop-off (Acarreo)</option>
+                            <option value="scrap">Recolección de Metales (Harvest)</option>
+                        </select>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label>Distancia (Millas)</label>
+                            <input type="number" id="mileage" placeholder="0" value="15">
+                        </div>
+                        <div class="form-group">
+                            <label>Volumen (Cargas de Traila)</label>
+                            <input type="number" id="volume" placeholder="0" value="1">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dificultad / Mano de Obra</label>
+                        <select id="labor-level">
+                            <option value="low">Fácil (Carga rápida)</option>
+                            <option value="med">Media (Desarme de muebles)</option>
+                            <option value="high">Difícil (Limpieza profunda / Pesado)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tarifa de Botadero (Extra)</label>
+                        <input type="number" id="dump-fees" placeholder="$0.00" value="75">
+                    </div>
+
+                    <button class="btn" onclick="calculateQuote()">GENERAR ESTIMADO INSTANTÁNEO</button>
+                </div>
+            </div>
+
+            <div class="side-panel">
+                <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card-title">Estimado Generado</div>
+                    <div class="quote-display">
+                        <div class="quote-label">Total Sugerido</div>
+                        <div class="quote-amount" id="total-quote">$0.00</div>
+
+                        <div style="width: 100%; margin-top: 1rem; border-top: 1px solid #444; padding-top: 1rem;">
+                            <div class="breakdown-item">
+                                <span>Base / Logística</span>
+                                <span id="base-breakdown">$0.00</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Distancia</span>
+                                <span id="mileage-breakdown">$0.00</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Basurero</span>
+                                <span id="dump-breakdown">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Mapa de Ruta Local</div>
+                    <div class="map-placeholder">
+                        Tracking Activo (Simulado)
+                    </div>
+                    <p style="font-size: 0.8rem; color: var(--text-dim);">
+                        Tráfico en I-10: Moderado. Tiempo estimado a landfill: 22 min.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            document.getElementById('current-time').innerText = `Houston, TX | ${timeStr}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        function calculateQuote() {
+            const service = document.getElementById('service-type').value;
+            const miles = parseFloat(document.getElementById('mileage').value) || 0;
+            const volume = parseFloat(document.getElementById('volume').value) || 0;
+            const dump = parseFloat(document.getElementById('dump-fees').value) || 0;
+            const labor = document.getElementById('labor-level').value;
+
+            // Simple Industrial Logic
+            let baseRate = 150; // Tarifa base por salida
+            if (service === 'roofing') baseRate = 250;
+            if (service === 'scrap') baseRate = 75;
+
+            let laborCost = 50;
+            if (labor === 'med') laborCost = 100;
+            if (labor === 'high') laborCost = 200;
+
+            const mileageCost = miles * 2.5; // $2.50 por milla
+            const total = (baseRate * volume) + mileageCost + dump + laborCost;
+
+            // Update UI
+            document.getElementById('total-quote').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('base-breakdown').innerText = `$${(baseRate * volume + laborCost).toFixed(2)}`;
+            document.getElementById('mileage-breakdown').innerText = `$${mileageCost.toFixed(2)}`;
+            document.getElementById('dump-breakdown').innerText = `$${dump.toFixed(2)}`;
+
+            // Subtle animation
+            document.getElementById('total-quote').style.transform = 'scale(1.1)';
+            setTimeout(() => document.getElementById('total-quote').style.transform = 'scale(1)', 200);
+        }
+
+        // Initial Calc
+        calculateQuote();
+    </script>
+</body>
+
+</html>
