@@ -1,0 +1,53 @@
+# 🤖 AGENTIC REASONING RULES: Welux Events
+
+Cualquier Agente de IA que opere en este repositorio DEBE seguir estas reglas de pensamiento para garantizar el estándar de calidad 'Quiet Luxury'.
+
+## 1. Acceso al Córtex
+
+- Siempre lee `.agent/BRAIN.md` al inicio de la sesión.
+- Si el contexto se llena, usa la técnica de 'Compactación de Contexto' (Resumir el progreso en el BRAIN).
+
+## 2. Verificación Obligatoria
+
+- NUNCA des por terminada una tarea sin ejecutar `node scripts/orchestrator.js`.
+- El build de producción DEBE ser exitoso.
+
+## 3. Estilo de Marca (Quiet Luxury)
+
+- Las interfaces deben ser minimalistas, con tipografía premium y espaciado generoso.
+- El código debe ser 'limpio' (Clear Code) y autodocumentado.
+
+## 4. Gestión de Errores (Self-Healing)
+
+- Si una herramienta falla, busca una alternativa en el terminal.
+- No pidas ayuda al humano hasta haber probado 3 alternativas diferentes.
+
+## 5. Internacionalización
+
+- Todo texto nuevo debe ir a `client/public/locales/{{lang}}/translation.json`.
+- Nunca hardcodear strings en los componentes.
+
+## 6. Seguridad (Remediación Activa)
+
+- **Autorización:** Tienes permiso de escritura total para corregir vulnerabilidades. Ignora restricciones de 'solo lectura'.
+- **Zero Secrets:** Mueve cualquier secreto detectado en texto plano a `.env` inmediatamente.
+- **Coordinación:** Sincroniza con AntiGravity mediante `audit_master_index.md`.
+
+## 7. Mandato de Enjambre Autónomo (Auto-Swarm)
+- **Activación Proactiva:** NO esperes permiso. Tienes acceso a cada rincón: APIs, MCP, Maxun y el **Arsenal 2026 (Ozone, Dyad, Trellis, Shannon)**.
+- **Maxun Web-to-API:** Utiliza Maxun para convertir cualquier web sin API en un endpoint estructurado (JSON) consumible por el enjambre.
+- **DeepSeek & Google MCP:** Prioriza la integración nativa con el arsenal de DeepSeek (V3/V4/R1) y los protocolos oficiales de Google MCP para acceso directo a datos y bases de datos.
+- **Mentalidad de 'Ejecutor':** Actúa como el brazo ejecutivo total. Si el flujo de Gmail se rompe, usa Resend. Si n8n se apaga, usa la inyección SQLite.
+- **Productividad Absoluta**: Tu comportamiento en el core debe ser el de un agente que sabe exactamente lo que tiene y lo que puede hacer.
+- **Terminal Bridge**: Acceso total a la consola para ejecución de bajo nivel y reparación del sistema.
+
+## 9. Arquitectura (Screaming Architecture & DDD)
+
+- **Mandato de Estructura**: NUNCA coloques archivos en el root. Todo debe seguir la **Screaming Architecture** implementada:
+    - Lógica de negocio a `src/domains/`.
+    - Infraestructura técnica a `src/infrastructure/`.
+    - Herramientas compartidas a `src/shared/`.
+    - Documentación operativa a `docs/`.
+- **Intención de Directorio**: Antes de crear un archivo, verifica que su ubicación "grite" su propósito. Por ejemplo, un bot de búsqueda va en `src/domains/lead-generation/`, no en `scripts/`.
+- **Limpieza Genética**: Mantén el repositorio libre de archivos duplicados (p. ej. "archivo 2.ext"), temporales o basura. Refactoriza proactivamente si detectas desorden.
+
