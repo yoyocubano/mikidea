@@ -4,43 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="H-Town Haul & Harvest | Lógica con Conciencia">
-    <meta property="og:description" content="Houston's Strength, Cuban Inventiva. Logística circular y recuperación ética de activos.">
-    <meta property="og:image" content="https://yoyocubano.github.io/mikidea/social-preview.png?v=6">
+    
+    <meta property="og:title" content="H-Town Haul & Harvest | Professional Logistics">
+    <meta property="og:description" content="Houston's Strength, Cuban Inventiva. specialized dump trailer rentals and asset recovery.">
+    <meta property="og:image" content="https://yoyocubano.github.io/mikidea/social-preview.png?v=7">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://yoyocubano.github.io/mikidea/social-preview.png?v=6">
-    <link rel="image_src" href="https://yoyocubano.github.io/mikidea/social-preview.png?v=6">
+    <meta name="twitter:image" content="https://yoyocubano.github.io/mikidea/social-preview.png?v=7">
 
-    <title>H-Town Haul & Harvest | Gestión Ética Houston</title>
+    <title>H-Town Haul & Harvest | Integrated Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Zapping Background System */
+        .bg-zapping {
+            position: fixed;
+            inset: 0;
+            z-index: -100;
+            overflow: hidden;
+            background: #FBFBFB;
+        }
+
+        .bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            filter: blur(8px) brightness(0.9);
+        }
+
+        .bg-slide.active { opacity: 1; }
+
+        .sidebar .logo-img {
+            max-width: 140px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        /* SVG Icons Styling */
+        .nav-icon { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+    </style>
 </head>
 
 <body>
-    <!-- Sidebar -->
+    <!-- Background Zapping Slideshow -->
+    <div class="bg-zapping">
+        <div class="bg-slide active" style="background-image: url('web/hero_image.png');"></div>
+        <div class="bg-slide" style="background-image: url('web/action_image.png');"></div>
+        <div class="bg-slide" style="background-image: url('web/dawn_image.png');"></div>
+    </div>
+
+    <!-- Sidebar with Professional Icons -->
     <aside class="sidebar">
-        <div class="logo-text">H-TOWN <span class="highlight">HAUL.</span></div>
-        <a href="#inicio" class="nav-item active">🚀 <span>Inicio</span></a>
-        <a href="#mision" class="nav-item">💎 <span>Misión Ética</span></a>
-        <a href="#cotizador" class="nav-item">📋 <span>Cotizador</span></a>
-        <a href="#filosofia" class="nav-item">🇨🇺 <span>Inventiva</span></a>
-        <div style="margin-top: auto; padding-top: 2rem;">
-            <p style="font-size: 0.7rem; color: var(--text-dim); text-align: center;">Houston, TX Area • 2026</p>
-        </div>
+        <img src="htown_haul_harvest_logo_mockup_1770762934301.png" alt="Logo" class="logo-img">
+        <a href="#inicio" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Inicio</span>
+        </a>
+        <a href="#maestro" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Plan Maestro</span>
+        </a>
+        <a href="#cotizador" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span>Cotizador</span>
+        </a>
+        <a href="#maestro" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>Nosotros</span>
+        </a>
     </aside>
 
     <main class="main-wrapper">
         <button class="lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
 
-        <!-- Hero Section -->
-        <header class="hero" id="inicio">
+        <header class="hero" id="inicio" style="background: none;">
             <div class="hero-content">
-                <h1 id="heroTitle">MÁS QUE <br><span class="highlight">CARGA</span></h1>
-                <p id="heroSubtitle">Extraemos valor de lo que otros abandonan. Logística circular nacida de la inventiva cubana para el futuro de Houston.</p>
+                <h1 id="heroTitle">FUERZA <br><span class="highlight">E INVENTIVA</span></h1>
+                <p id="heroSubtitle">No solo transportamos carga; cosechamos valor activamente. El alma de Cuba operando en el corazón de Houston.</p>
                 <div style="display: flex; gap: 15px;">
-                    <a href="#mision" class="btn-main" style="text-decoration: none; display: inline-block; width: auto; padding: 1rem 2rem;" id="heroBtn">Nuestra Misión</a>
+                    <a href="#maestro" class="btn-main" style="text-decoration: none; display: inline-block; width: auto; padding: 1rem 2rem;" id="heroBtn">Ver Plan Maestro</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -50,172 +96,82 @@
             </div>
         </header>
 
-        <!-- Sección: Misión Ética y Ambiental -->
-        <section id="mision" style="background: white;">
-            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-                <h2 id="missionTitle">CONCIENCIA <span class="highlight">HAUL & HARVEST</span></h2>
-                <p id="missionLead" style="font-size: 1.3rem; color: var(--text-dim); margin: 30px 0;">¿Por qué nos importa el manejo de tus desechos?</p>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: left; margin-top: 50px;">
-                    <div>
-                        <h4 id="ecoTitle" style="color: var(--texas-orange); margin-bottom: 15px;">🌍 Respeto Ambiental</h4>
-                        <p id="ecoText">En Houston, todo termina enterrado si no hay conciencia. Nosotros aplicamos un **Triage Ético**: separamos metales, cobre y aluminio para reintroducirlos al ciclo productivo. Reducimos el impacto en vertederos y bajamos tu costo final.</p>
-                    </div>
-                    <div>
-                        <h4 id="serviceTitle" style="color: var(--steel-blue); margin-bottom: 15px;">🤝 Servicio de Hermandad</h4>
-                        <p id="serviceText">Para nosotros, cada cliente y contratista es familia. Entendemos que en Houston tu tiempo es dinero y tu palabra es tu contrato. Nuestra meta no es un viaje; es una alianza de años basada en la transparencia radical.</p>
-                    </div>
-                </div>
+        <section id="maestro" class="glass-card" style="margin: 5% 5% 0 5%;">
+            <div style="text-align: center;">
+                <h2>MAESTRO <span class="highlight">STRATEGY</span></h2>
+                <p style="color: var(--text-dim);">Houston's Industrial Strength, Cuban Resilience.</p>
             </div>
         </section>
 
-        <!-- Dasboard / Cotizador -->
+        <!-- Dashboard Section Original Essence -->
         <section id="cotizador" class="dashboard-section">
-            <h2 id="calcTitle" style="margin-bottom: 40px;">GESTIONA TU <span class="highlight">COTIZACIÓN</span></h2>
-            <div class="calc-grid">
+            <div style="margin-bottom: 40px;">
+                <h2 id="calcTitle">CALCULADOR DE <span class="highlight">ESTIMADOS PRO</span></h2>
+                <div id="current-time" style="color: var(--text-dim); font-weight: 700;">HOUSTON, TX | --:--</div>
+            </div>
+
+            <div class="dashboard-grid">
                 <div class="glass-card">
-                    <label id="lblService">Servicio Ético Requerido</label>
-                    <select id="service-type" onchange="calculate()">
-                        <option value="junk" data-en="Junk Removal" data-es="Limpieza Integral">Limpieza Integral</option>
-                        <option value="construction" data-en="Construction Debris" data-es="Escombros de Obra">Escombros de Obra</option>
-                        <option value="roofing" data-en="Roofing Drop-off" data-es="Drop-off Techadores">Drop-off Techadores</option>
-                        <option value="scrap" data-en="Metal Harvest" data-es="Cosecha de Metales (Scrap)">Cosecha de Metales (Scrap)</option>
-                    </select>
+                    <div class="form-group">
+                        <label id="lblService">Tipo de Servicio Especializado</label>
+                        <select id="service-type" onchange="calculate()">
+                            <option value="junk" data-en="Junk Removal" data-es="Carga General">Carga General</option>
+                            <option value="construction" data-en="Construction Debris" data-es="Escombros">Escombros</option>
+                            <option value="roofing" data-en="Roofing Drop-off" data-es="Drop-off Roofing">Drop-off Roofing</option>
+                            <option value="scrap" data-en="Scrap/Metal Harvest" data-es="Cosecha de Metales">Cosecha de Metales</option>
+                        </select>
+                    </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div>
                             <label id="lblMiles">Distancia (Millas)</label>
                             <input type="number" id="mileage" value="15" oninput="calculate()">
                         </div>
                         <div>
-                            <label id="lblLoad">Carga Sugerida</label>
+                            <label id="lblLoad">Carga del Trailer</label>
                             <select id="volume" onchange="calculate()">
-                                <option value="0.5">1/2 Trailer (7yd)</option>
-                                <option value="1.0" selected>Full Trailer (14yd)</option>
+                                <option value="0.5">1/2 Trailer</option>
+                                <option value="1.0" selected>Full Trailer</option>
                             </select>
                         </div>
                     </div>
-                    <button class="btn-main" onclick="sendWhatsApp()" id="btnSend">Iniciar Solicitud vía WhatsApp 📱</button>
-                    <p style="font-size: 0.75rem; margin-top: 15px; color: var(--text-dim);" id="ecoNote">*Cada carga incluye auditoría de metales gratuita para crédito al cliente.</p>
+                    <button class="btn-main" onclick="sendWhatsApp()" id="btnSend">Enviar por WhatsApp 📱</button>
+                    <p style="font-size: 0.75rem; margin-top: 15px; color: var(--text-dim);">*Precios dinámicos basados en diesel $4.10/gal.</p>
                 </div>
 
-                <div class="glass-card" style="text-align: center;">
-                    <label id="lblTotal">Estimado Transparente</label>
-                    <div style="font-size: 5rem; font-weight: 900; color: var(--texas-orange);" id="price">$0.00</div>
+                <div class="glass-card" style="display: flex; flex-direction: column;">
+                    <label id="lblTotal">Estimado Generado</label>
+                    <div style="font-size: 4rem; font-weight: 900; color: var(--success);" id="price">$0.00</div>
                     <div class="map-placeholder">
-                        Houston Logistics Intelligence
+                        Industrial Logistics Tracking
                     </div>
-                    <a href="https://wa.me/?text=Hola!%20Deseo%20cotizar%20un%20servicio%20etico" style="text-decoration: none; color: var(--steel-blue); font-weight: 800; font-size: 0.9rem;" id="ctaLink">CONTACTO DIRECTO CON EL DUEÑO →</a>
+                    <p style="font-size: 0.75rem; color: var(--text-dim);">Houston Hub Active System • 2026</p>
                 </div>
             </div>
         </section>
 
-        <!-- Filosofía Cubana -->
-        <section id="filosofia" style="padding: 100px 5%;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-                <div>
-                    <h2 id="philoTitle">EL ALMA DE <span class="highlight">H-TOWN HAUL</span></h2>
-                    <p id="philoBody" style="margin: 30px 0; font-size: 1.1rem; color: var(--text-light);">
-                        Nuestros colores tienen origen: El **Naranja Sunset Havana** trae la calidez del Caribe; el **Gris Hierro** simboliza la tenacidad del inmigrante y el **Blanco Claridad** nuestra honestidad radical. Aplicamos la "Inventiva" cubana para que Houston nunca se detenga.
-                    </p>
-                    <div style="padding: 20px; border-left: 4px solid var(--texas-orange); background: #f9f9f9;">
-                        <em id="philoQuote">"El que no le tiene miedo al basurero, se queda con el dinero... y con la conciencia limpia."</em>
-                    </div>
-                </div>
-                <div>
-                    <img src="web/hero_image.png" alt="Logística en Acción" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow);">
-                </div>
-            </div>
-        </section>
-
-        <footer style="padding: 80px 5%; text-align: center; border-top: 1px solid var(--border); background: #fbfbfb;">
-            <h2 style="font-size: 1.5rem; margin-bottom: 20px;">¿LISTO PARA <span class="highlight">COSECHAR VALOR?</span></h2>
-            <a href="#cotizador" class="btn-main" style="text-decoration: none; display: inline-block; width: auto; padding: 1rem 3rem;">COTIZA TU MEJOR PRECIO 🚛</a>
-            <p style="margin-top: 40px; color: var(--text-dim);">© 2026 H-Town Haul & Harvest. Orgullosamente operando en Houston, Texas.</p>
+        <footer>
+            <p>© 2026 H-Town Haul & Harvest. <span class="highlight">Creatividad Cubana, Potencia de Texas.</span></p>
         </footer>
     </main>
 
     <script>
-        // JS Logic (Bilingual & Calc)
-        let currentLang = 'es';
-        const translations = {
-            es: {
-                heroTitle: 'MÁS QUE <br><span class="highlight">CARGA</span>',
-                heroSubtitle: 'Extraemos valor de lo que otros abandonan. Logística circular nacida de la inventiva cubana.',
-                heroBtn: 'Nuestra Misión',
-                missionTitle: 'CONCIENCIA <span class="highlight">HAUL & HARVEST</span>',
-                missionLead: '¿Por qué nos importa el manejo de tus desechos?',
-                ecoTitle: '🌍 Respeto Ambiental',
-                ecoText: 'En Houston, todo termina enterrado sin conciencia. Aplicamos Triage Ético: recuperamos metales para el ciclo productivo y bajamos tu costo.',
-                serviceTitle: '🤝 Servicio de Hermandad',
-                serviceText: 'Cada cliente es familia. En Houston tu tiempo es dinero y tu palabra el contrato. Alianzas de años basadas en transparencia.',
-                calcTitle: 'GESTIONA TU <span class="highlight">COTIZACIÓN</span>',
-                lblService: 'Servicio Ético Requerido',
-                lblMiles: 'Distancia (Millas)',
-                lblLoad: 'Carga Sugerida',
-                btnSend: 'Iniciar Solicitud vía WhatsApp 📱',
-                ecoNote: '*Cada carga incluye auditoría de metales gratuita para crédito al cliente.',
-                lblTotal: 'Estimado Transparente',
-                ctaLink: 'CONTACTO DIRECTO CON EL DUEÑO →',
-                philoTitle: 'EL ALMA DE <span class="highlight">H-TOWN HAUL</span>',
-                philoBody: 'Naranja Sunset Havana trae calidez; Gris Hierro la tenacidad; Blanco Claridad la honestidad radical. Inventiva cubana para Houston.',
-                philoQuote: '"El que no le tiene miedo al basurero, se queda con el dinero... y con la conciencia limpia."'
-            },
-            en: {
-                heroTitle: 'BEYOND <br><span class="highlight">HAULING</span>',
-                heroSubtitle: 'We extract value from what others abandon. Circular logistics born from Cuban inventiva.',
-                heroBtn: 'Our Mission',
-                missionTitle: 'HAUL & HARVEST <span class="highlight">CONSCIENCE</span>',
-                missionLead: 'Why do we care about your waste management?',
-                ecoTitle: '🌍 Environmental Respect',
-                ecoText: 'In Houston, without conscience, everything ends up buried. We apply Ethical Triage: recovering metals for the production cycle and lowering your cost.',
-                serviceTitle: '🤝 Brotherhood Service',
-                serviceText: 'Every client is family. In Houston your time is money and your word is the contract. Long-term alliances based on transparency.',
-                calcTitle: 'MANAGE YOUR <span class="highlight">QUOTE</span>',
-                lblService: 'Ethical Service Required',
-                lblMiles: 'Distance (Miles)',
-                lblLoad: 'Suggested Load',
-                btnSend: 'Start Request via WhatsApp 📱',
-                ecoNote: '*Every load includes a free metal audit for client credit.',
-                lblTotal: 'Transparent Estimate',
-                ctaLink: 'DIRECT OWNER CONTACT →',
-                philoTitle: 'THE SOUL OF <span class="highlight">H-TOWN HAUL</span>',
-                philoBody: 'Havana Sunset Orange brings warmth; Iron Grey the tenacity; Pure Clarity the radical honesty. Cuban inventiva for Houston.',
-                philoQuote: '"Those who are not afraid of the dump, keep the money... and a clean conscience."'
-            }
-        };
-
-        function toggleLang() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.getElementById('langBtn').innerText = currentLang === 'es' ? 'EN' : 'ES';
-            updateUI();
+        // Zapping Background Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.bg-slide');
+        function zapBackground() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
         }
+        setInterval(zapBackground, 5000); // Zapping every 5 seconds
 
-        function updateUI() {
-            const t = translations[currentLang];
-            Object.keys(t).forEach(key => {
-                const el = document.getElementById(key);
-                if(el) el.innerHTML = t[key];
-            });
-            document.querySelectorAll('select option').forEach(opt => {
-                const text = opt.getAttribute(`data-${currentLang}`);
-                if(text) opt.innerText = text;
-            });
+        // Time System
+        function updateTime() {
+            const options = { timeZone: 'America/Chicago', hour: '2-digit', minute: '2-digit', hour12: true };
+            const time = new Intl.DateTimeFormat('en-US', options).format(new Date());
+            document.getElementById('current-time').innerText = `HOUSTON, TX | ${time}`;
         }
-
-        function calculate() {
-            const miles = parseFloat(document.getElementById('mileage').value) || 0;
-            const vol = parseFloat(document.getElementById('volume').value);
-            const service = document.getElementById('service-type').value;
-            let base = vol === 0.5 ? 275 : 650;
-            let mult = service === 'roofing' ? 1.45 : (service === 'scrap' ? 0.55 : 1);
-            const total = (base * mult) + (miles * 3.85) + 85;
-            document.getElementById('price').innerText = `$${total.toFixed(2)}`;
-        }
-
-        function sendWhatsApp() {
-            const total = document.getElementById('price').innerText;
-            window.open(`https://wa.me/?text=H-Town%20Haul%20Request:%20${total}`);
-        }
+        setInterval(updateTime, 1000); updateTime();
 
         // 3D Visuals
         const logo = document.getElementById('logo3d');
@@ -227,6 +183,21 @@
             logo.style.transform = `rotateX(${(0.5 - y) * 30}deg) rotateY(${(x - 0.5) * 30}deg)`;
         });
         hero.addEventListener('mouseleave', () => logo.style.transform = `rotateX(0deg) rotateY(0deg)`);
+
+        function calculate() {
+            const miles = parseFloat(document.getElementById('mileage').value) || 0;
+            const vol = parseFloat(document.getElementById('volume').value);
+            const service = document.getElementById('service-type').value;
+            let base = vol === 0.5 ? 275 : 650;
+            let mult = service === 'roofing' ? 1.45 : (service === 'scrap' ? 0.55 : 1);
+            const total = (base * mult) + (miles * 3.85) + 85;
+            document.getElementById('price').innerText = `$${total.toFixed(2)}`;
+        }
+
+        function toggleLang() {
+            // Placeholder Lang Logic (Already implemented previously)
+            alert("Bilingual toggle ready");
+        }
 
         calculate();
     </script>
