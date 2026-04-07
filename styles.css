@@ -2,18 +2,17 @@
     --texas-orange: #EF6C00;
     --steel-blue: #263238;
     --bg-white: #FBFBFB;
-    --card-white: rgba(255, 255, 255, 0.98); /* Mayor opacidad para lectura con menos blur */
+    --card-white: rgba(255, 255, 255, 0.99); /* Casi opaco para compensar el fondo nítido */
     --text-main: #121212;
     --text-dim: #37474F;
     --border: rgba(0, 0, 0, 0.05);
-    --shadow-pro: 0 10px 40px rgba(0, 0, 0, 0.04);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
 body { background: var(--bg-white); color: var(--text-main); }
 
-/* Zapping con Blur al 15% (Aprox 7px) */
+/* Zapping con Blur al 10% (4px) */
 .zapping-container { position: fixed; inset: 0; z-index: -100; background: #000; }
 .zapping-image { 
     position: absolute; 
@@ -21,12 +20,11 @@ body { background: var(--bg-white); color: var(--text-main); }
     background-size: cover; 
     background-position: center; 
     opacity: 0; 
-    filter: blur(7px) brightness(1.1); /* AJUSTE AL 15% PARA REALISMO */
+    filter: blur(4px) brightness(1.1); /* AJUSTE AL 10% PARA NITIDEZ TOTAL */
     transition: opacity 1.8s ease-in-out; 
 }
-.zapping-image.active { opacity: 0.65; }
+.zapping-image.active { opacity: 0.7; } /* Más opacidad para que la imagen se vea rotunda */
 
-/* Mobile Top Bar (Logo siempre visible) */
 .mobile-top-bar {
     display: none;
     position: fixed;
@@ -42,7 +40,6 @@ body { background: var(--bg-white); color: var(--text-main); }
 }
 .mobile-top-bar img { height: 35px; }
 
-/* Sidebar para PC */
 .sidebar {
     position: fixed;
     top: 30px;
@@ -53,7 +50,7 @@ body { background: var(--bg-white); color: var(--text-main); }
     border-radius: 20px;
     padding: 2.5rem 1.5rem;
     z-index: 5000;
-    box-shadow: var(--shadow-pro);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.04);
     display: flex;
     flex-direction: column;
 }
@@ -75,7 +72,6 @@ body { background: var(--bg-white); color: var(--text-main); }
 }
 .nav-item.active { background: var(--texas-orange); color: white; }
 
-/* Content Layout */
 .content-wrapper {
     margin-left: 310px;
     padding: 60px 4%;
@@ -83,8 +79,8 @@ body { background: var(--bg-white); color: var(--text-main); }
     z-index: 100;
 }
 
-.hero-clean h1 { font-size: 4rem; font-weight: 950; color: var(--steel-blue); margin-bottom: 20px; }
-.hero-clean p { font-size: 1.3rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
+.hero-clean h1 { font-size: 4rem; font-weight: 950; color: var(--steel-blue); line-height: 1; margin-bottom: 30px; }
+.hero-clean p { font-size: 1.4rem; color: var(--text-dim); max-width: 650px; }
 
 .glass-card {
     background: var(--card-white);
@@ -92,11 +88,9 @@ body { background: var(--bg-white); color: var(--text-main); }
     padding: 4rem;
     margin-bottom: 3rem;
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-pro);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
 }
 
-/* Responsividad Móvil */
 @media (max-width: 1000px) {
     .mobile-top-bar { display: flex; }
     .sidebar {
@@ -113,5 +107,6 @@ body { background: var(--bg-white); color: var(--text-main); }
     .nav-links { flex-direction: row; width: 100%; justify-content: space-around; }
     .nav-item { flex-direction: column; gap: 4px; padding: 10px; font-size: 0.65rem; }
     .content-wrapper { margin-left: 0; padding: 100px 15px 120px 15px; }
-    .glass-card { padding: 3rem 1.5rem; }
+    .hero-clean h1 { font-size: 2.8rem; }
+    .glass-card { padding: 2.5rem 1.5rem; }
 }
