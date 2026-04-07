@@ -2,29 +2,47 @@
     --texas-orange: #EF6C00;
     --steel-blue: #263238;
     --bg-white: #FBFBFB;
-    --card-white: rgba(255, 255, 255, 0.98);
+    --card-white: rgba(255, 255, 255, 0.96);
     --text-main: #121212;
-    --text-dim: #546E7A;
+    --text-dim: #37474F;
     --border: rgba(0, 0, 0, 0.05);
-    --success: #1B5E20;
-    --shadow-pro: 0 15px 50px rgba(0, 0, 0, 0.05);
+    --shadow-pro: 0 10px 40px rgba(0, 0, 0, 0.03);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
 
 body { background: var(--bg-white); color: var(--text-main); }
 
-/* Background Zapping */
-.zapping-container { position: fixed; inset: 0; z-index: -100; background: #000; pointer-events: none; }
-.zapping-image { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; filter: blur(30px) brightness(1.2); transition: opacity 2s ease-in-out; }
-.zapping-image.active { opacity: 0.65; }
+/* Zapping con Blur Equilibrado (10px) */
+.zapping-container { position: fixed; inset: 0; z-index: -100; background: #000; }
+.zapping-image { 
+    position: absolute; 
+    inset: 0; 
+    background-size: cover; 
+    background-position: center; 
+    opacity: 0; 
+    filter: blur(10px) brightness(1.1); /* Blur reducido a 10px */
+    transition: opacity 1.5s ease; 
+}
+.zapping-image.active { opacity: 0.6; }
 
-/* Sidebar blindado */
+/* Mobile Top Bar (Solo visible en móviles) */
+.mobile-top-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: white;
+    padding: 10px 20px;
+    z-index: 10000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    align-items: center;
+}
+.mobile-top-bar img { height: 35px; }
+
+/* Sidebar para PC */
 .sidebar {
     position: fixed;
     top: 30px;
@@ -34,55 +52,52 @@ body { background: var(--bg-white); color: var(--text-main); }
     background: white;
     border-radius: 20px;
     padding: 2rem 1.5rem;
-    z-index: 50000; /* Siempre arriba pero controlado */
+    z-index: 5000;
     box-shadow: var(--shadow-pro);
     display: flex;
     flex-direction: column;
 }
 
-/* Blindaje del Logo en esquina superior */
-.logo-corner { display: block; width: 100%; margin-bottom: 2rem; overflow: hidden; }
-.logo-corner img { 
-    width: 140px !important; /* FIJO Y PEQUEÑO */
-    height: auto !important;
-    display: block;
-    margin-bottom: 10px;
-}
+.logo-corner { margin-bottom: 2rem; }
+.logo-corner img { width: 150px; height: auto; }
 
-.nav-links { display: flex; flex-direction: column; gap: 0.6rem; }
+.nav-links { display: flex; flex-direction: column; gap: 0.8rem; }
 .nav-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 18px;
+    padding: 14px 18px;
     text-decoration: none;
     color: var(--text-dim);
     font-weight: 800;
     font-size: 0.9rem;
     border-radius: 12px;
-    transition: 0.3s;
 }
-.nav-item:hover, .nav-item.active { background: var(--texas-orange); color: white; }
+.nav-item.active { background: var(--texas-orange); color: white; }
 
-/* Content Blindado */
+/* Content Layout */
 .content-wrapper {
-    margin-left: 320px;
+    margin-left: 310px;
     padding: 80px 4%;
     position: relative;
-    z-index: 1000; /* Aseguramos que el contenido esté bien arriba de la troca borrosa */
+    z-index: 100;
 }
+
+.hero-clean h1 { font-size: 4rem; font-weight: 950; color: var(--steel-blue); margin-bottom: 20px; }
+.hero-clean p { font-size: 1.3rem; color: var(--text-dim); max-width: 600px; margin-bottom: 40px; }
 
 .glass-card {
     background: var(--card-white);
-    border-radius: 30px;
+    border-radius: 24px;
     padding: 3.5rem;
     margin-bottom: 3rem;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-pro);
 }
 
-/* Responsividad Móvil */
+/* Responsividad Móvil Corregida para Logo */
 @media (max-width: 1000px) {
+    .mobile-top-bar { display: flex; } /* Mostramos cabecera con logo */
     .sidebar {
         top: auto;
         bottom: 15px;
@@ -90,10 +105,15 @@ body { background: var(--bg-white); color: var(--text-main); }
         width: calc(100% - 30px);
         height: 70px;
         flex-direction: row;
-        padding: 0 1rem;
+        padding: 0;
         border-radius: 18px;
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
     }
     .logo-corner { display: none; }
-    .content-wrapper { margin-left: 0; padding: 20px 15px 120px 15px; }
-    .glass-card { padding: 2.5rem 1.5rem; border-radius: 20px; }
+    .nav-links { flex-direction: row; width: 100%; justify-content: space-around; }
+    .nav-item { flex-direction: column; gap: 4px; padding: 10px; font-size: 0.65rem; }
+    
+    .content-wrapper { margin-left: 0; padding: 100px 15px 120px 15px; } /* Ajuste top para cabecera fija */
+    .hero-clean h1 { font-size: 2.5rem; }
+    .glass-card { padding: 2.5rem 1.5rem; }
 }
