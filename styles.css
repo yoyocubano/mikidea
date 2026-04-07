@@ -1,12 +1,14 @@
 :root {
-    --texas-orange: #FF6D00;
-    --charcoal: #050505;
-    --glass: rgba(255, 255, 255, 0.05);
-    --glass-heavy: rgba(15, 15, 15, 0.7);
-    --border: rgba(255, 255, 255, 0.15);
-    --white: #FFFFFF;
-    --grey-bright: #E0E0E0;
-    --success: #00E676;
+    --texas-orange: #EF6C00;
+    --steel-blue: #263238;
+    --bg-white: #F8F9FA;
+    --card-white: #FFFFFF;
+    --glass-white: rgba(255, 255, 255, 0.7);
+    --text-main: #1A1A1A;
+    --text-light: #546E7A;
+    --border-light: rgba(0, 0, 0, 0.08);
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --shadow-bold: 0 20px 50px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -18,22 +20,22 @@
 }
 
 body {
-    background-color: var(--charcoal);
-    color: var(--white);
-    line-height: 1.5;
+    background-color: var(--bg-white);
+    color: var(--text-main);
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
 /* Premium Typography */
 h1, h2, h3 {
     font-weight: 900;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.04em;
     text-transform: uppercase;
+    color: var(--steel-blue);
 }
 
 .highlight {
     color: var(--texas-orange);
-    text-shadow: 0 0 20px rgba(255, 109, 0, 0.4);
 }
 
 /* Nav & Language Switch */
@@ -41,14 +43,15 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 1rem 5%;
+    padding: 1.2rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(5, 5, 5, 0.85);
-    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(25px);
     z-index: 5000;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
 }
 
 .logo-container {
@@ -58,8 +61,8 @@ nav {
 }
 
 .logo-img {
-    height: 45px;
-    filter: drop-shadow(0 0 10px rgba(255, 109, 0, 0.3));
+    height: 48px;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
 }
 
 .nav-links {
@@ -69,7 +72,7 @@ nav {
 }
 
 .nav-links a {
-    color: var(--grey-bright);
+    color: var(--text-light);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 700;
@@ -77,18 +80,27 @@ nav {
     transition: 0.3s;
 }
 
+.nav-links a:hover {
+    color: var(--texas-orange);
+}
+
 .lang-switch {
-    background: var(--texas-orange);
+    background: var(--steel-blue);
     border: none;
     color: white;
-    padding: 5px 12px;
-    border-radius: 4px;
+    padding: 6px 14px;
+    border-radius: 6px;
     font-weight: 800;
     cursor: pointer;
     font-size: 0.75rem;
+    transition: 0.3s;
 }
 
-/* Hero with Heavy Glass Overlay */
+.lang-switch:hover {
+    background: var(--texas-orange);
+}
+
+/* Hero Section - Light Industrial */
 .hero-wrapper {
     position: relative;
     height: 100vh;
@@ -98,8 +110,7 @@ nav {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(5, 5, 5, 0.8) 0%, rgba(5, 5, 5, 0.4) 100%);
-    backdrop-filter: blur(8px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(248, 249, 250, 0.95) 70%);
     display: flex;
     align-items: center;
     padding: 0 5%;
@@ -112,81 +123,98 @@ nav {
 .hero h1 {
     font-size: clamp(3rem, 10vw, 5.5rem);
     margin-bottom: 1.5rem;
+    color: var(--steel-blue);
 }
 
 .hero p {
-    font-size: 1.3rem;
-    color: var(--grey-bright);
+    font-size: 1.35rem;
+    color: var(--text-light);
     margin-bottom: 2.5rem;
+    max-width: 600px;
 }
 
 /* Sections */
 section {
-    padding: 120px 5%;
-    background: var(--charcoal);
+    padding: 140px 5%;
+    background: var(--bg-white);
 }
 
 .glass-card {
-    background: var(--glass-heavy);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 3rem;
-    backdrop-filter: blur(15px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    background: var(--card-white);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 3.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Calculator UI - Hyper Clear */
+.glass-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-bold);
+    border-color: var(--texas-orange);
+}
+
+/* Calculator UI - Hyper Clean Light */
 .calc-grid {
     display: grid;
     grid-template-columns: 1fr 450px;
-    gap: 3rem;
-    margin-top: 50px;
+    gap: 4rem;
+    margin-top: 60px;
 }
 
 @media (max-width: 1000px) { .calc-grid { grid-template-columns: 1fr; } }
 
 .price-main {
-    font-size: 5rem;
-    color: var(--success);
+    font-size: 6rem;
+    color: var(--steel-blue);
     font-weight: 900;
-    text-shadow: 0 0 30px rgba(0, 230, 118, 0.3);
 }
 
 input, select {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
+    background: #F1F3F4;
+    border: 1px solid transparent;
     padding: 1.2rem;
-    color: white;
-    border-radius: 10px;
+    color: var(--text-main);
+    border-radius: 12px;
     font-size: 1.1rem;
     width: 100%;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--texas-orange);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(239, 108, 0, 0.1);
 }
 
 label {
-    color: var(--texas-orange);
+    color: var(--text-light);
     font-weight: 800;
     font-size: 0.8rem;
     letter-spacing: 1.5px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     display: block;
+    text-transform: uppercase;
 }
 
 .btn-primary {
     background: var(--texas-orange);
     color: white;
-    padding: 1.2rem;
+    padding: 1.4rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: 900;
     text-transform: uppercase;
     cursor: pointer;
     transition: 0.4s;
     width: 100%;
+    letter-spacing: 1px;
 }
 
 .btn-primary:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 30px rgba(255, 109, 0, 0.4);
+    background: var(--steel-blue);
+    box-shadow: 0 15px 40px rgba(38, 50, 56, 0.3);
 }
 
 /* Animations */
@@ -199,4 +227,9 @@ label {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+footer {
+    background: white;
+    border-top: 1px solid var(--border-light);
 }
