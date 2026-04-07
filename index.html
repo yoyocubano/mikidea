@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="H-Town Haul & Harvest | Industrial Power">
     <meta property="og:description" content="Houston's Strength, Cuban Resilience. Pro Logistics & Harvest 2026.">
-    <meta property="og:image" content="https://yoyocubano.github.io/mikidea/social-preview.png?v=9">
+    <meta property="og:image" content="https://yoyocubano.github.io/mikidea/social-preview.png?v=10">
     <meta name="twitter:card" content="summary_large_image">
 
     <title>H-Town Haul & Harvest | Professional Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=10">
     
     <!-- Feather Icons for Professional Look -->
     <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* Mobile-only logo corner fix (In case CSS won't load fast enough) */
+        @media (min-width: 1001px) {
+            .logo-corner img { width: 140px !important; }
+        }
+    </style>
 </head>
 
 <body>
@@ -25,7 +31,7 @@
         <div class="zapping-image" style="background-image: url('web/dawn_image.png');"></div>
     </div>
 
-    <!-- SIDEBAR FIXED WITH LOGO IN CORNER -->
+    <!-- SIDEBAR FIXED - CLEAR AND CONTROLLED -->
     <aside class="sidebar">
         <div class="logo-corner">
             <img src="htown_haul_harvest_logo_mockup_1770762934301.png" alt="H-Town Logo">
@@ -43,27 +49,23 @@
     </aside>
 
     <div class="content-wrapper">
-        <button class="lang-btn" onclick="toggleLang()" id="langBtn" style="position: fixed; top: 40px; right: 40px; z-index: 6000; background: var(--steel-blue); color: white; padding: 12px 24px; border-radius: 40px; border: none; font-weight: 900; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">EN</button>
+        <button class="lang-btn" onclick="toggleLang()" id="langBtn" style="position: fixed; top: 30px; right: 30px; z-index: 6000; background: var(--steel-blue); color: white; padding: 12px 24px; border-radius: 40px; border: none; font-weight: 900; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">EN</button>
 
-        <!-- HERO SECTION - CLEAN AND POWERFUL (NO BIG CENTER LOGO) -->
-        <header id="home" class="hero-clean">
-            <h1 id="heroTitle">FUERZA <br><span style="color: var(--texas-orange);">INDUSTRIAL.</span></h1>
-            <p id="heroSubtitle">Extraemos valor de lo que otros abandonan. Logística con alma e inventiva nacida de la resiliencia cubana operando en el motor de Houston.</p>
-            <div style="display: flex; gap: 20px;">
-                <button class="btn-cta" style="width: auto; padding: 1.5rem 3rem;" onclick="location.href='#calc'">Cotiza Ahora</button>
-                <button class="btn-cta" style="background: var(--steel-blue); width: auto; padding: 1.5rem 3rem;" onclick="location.href='#story'">Nuestra Historia</button>
-            </div>
+        <!-- NO HERO LOGO - FULL TEXT CLEARANCE -->
+        <header id="home" style="min-height: 50vh; display: flex; flex-direction: column; justify-content: center; margin-bottom: 50px;">
+            <h1 style="font-size: 4rem; font-weight: 950; line-height: 1; color: var(--steel-blue); margin-bottom: 2rem;">FUERZA <br><span style="color: var(--texas-orange);">INDUSTRIAL.</span></h1>
+            <p id="heroSubtitle" style="font-size: 1.4rem; color: var(--text-dim); max-width: 600px; line-height: 1.4;">Logística circular nacida de la inventiva cubana operando en el motor de Houston. Profesionalismo y recuperación de valor.</p>
         </header>
 
-        <!-- DASHBOARD COTIZADOR - SPACIOUS AND CLEAR -->
+        <!-- DASHBOARD COTIZADOR - CLEAR AND INTERACTIVE -->
         <section id="calc" class="glass-card">
-            <h2 id="calcTitle" class="section-title">COTIZADOR <span style="color: var(--texas-orange);">GAMA PRO</span></h2>
+            <h2 id="calcTitle" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 40px; text-transform: uppercase;">ESTIMADOR <span style="color: var(--texas-orange);">GAMA PRO</span></h2>
             
-            <div class="dashboard-grid">
+            <div style="display: grid; grid-template-columns: 1fr 400px; gap: 40px;" class="grid-res">
                 <div class="form-side">
-                    <div class="form-group">
-                        <label id="lblService">Servicio Logístico Especializado</label>
-                        <select id="service-type" onchange="calculate()">
+                    <div style="margin-bottom: 30px;">
+                        <label id="lblService">Servicio Logístico Requerido</label>
+                        <select id="service-type" onchange="calculate()" style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border);">
                             <option value="junk" data-en="Junk Removal" data-es="Limpieza Integral">Limpieza Integral</option>
                             <option value="construction" data-en="Construction Debris" data-es="Escombros de Obra">Escombros de Obra</option>
                             <option value="roofing" data-en="Roofing Drop-off" data-es="Drop-off Techadores">Drop-off Techadores</option>
@@ -71,62 +73,48 @@
                         </select>
                     </div>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <div class="form-group">
+                        <div>
                             <label id="lblMiles">Distancia (Millas)</label>
-                            <input type="number" id="mileage" value="25" oninput="calculate()">
+                            <input type="number" id="mileage" value="25" oninput="calculate()" style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border);">
                         </div>
-                        <div class="form-group">
+                        <div>
                             <label id="lblLoad">Carga Sugerida</label>
-                            <select id="volume" onchange="calculate()">
+                            <select id="volume" onchange="calculate()" style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid var(--border);">
                                 <option value="0.5">1/2 Trailer (Compacto)</option>
                                 <option value="1.0" selected>Full Trailer (Pro)</option>
                             </select>
                         </div>
                     </div>
-                    <button class="btn-cta" onclick="sendWhatsApp()" id="btnSend">Iniciar Solicitud vía WhatsApp 📱</button>
+                    <button onclick="sendWhatsApp()" style="background: var(--texas-orange); color: white; border: none; padding: 1.4rem; border-radius: 14px; font-weight: 900; width: 100%; margin-top: 30px; cursor: pointer; text-transform: uppercase;">Iniciar vía WhatsApp 📱</button>
                 </div>
 
-                <div class="result-side" style="text-align: center; display: flex; flex-direction: column; justify-content: center; background: #F4F6F8; border-radius: 20px; padding: 4rem;">
+                <div class="result-side" style="text-align: center; border-radius: 20px; background: #F4F6F8; padding: 3rem;">
                     <label id="lblTotal">Estimado Transparente</label>
-                    <div style="font-size: 5rem; font-weight: 950; color: var(--steel-blue); line-height: 1; margin: 2rem 0;" id="price">$0.00</div>
-                    <p id="marketInfo" style="font-size: 0.8rem; color: var(--text-dim); font-weight: 800;">DÍA FISCAL HOUSTON 2026 • DIESEL $4.10</p>
+                    <div style="font-size: 5rem; font-weight: 950; color: var(--steel-blue); line-height: 1; margin: 1.5rem 0;" id="price">$0.00</div>
+                    <p id="marketInfo" style="font-size: 0.8rem; color: var(--text-dim); font-weight: 800;">DIESEL HOUSTON $4.10/gal</p>
                 </div>
             </div>
         </section>
 
-        <!-- HISTORIA - SPACIOUS -->
         <section id="story" class="glass-card">
-            <h2 class="section-title">NUESTRA <span style="color: var(--texas-orange);">HISTORIA</span></h2>
-            <div style="max-width: 800px; font-size: 1.4rem; color: var(--text-dim); line-height: 1.5;">
-                <p id="storyBody">Nacimos del aprovechamiento inteligente. En H-Town Haul & Harvest, cada carga es una oportunidad para demostrar nuestra puntualidad técnica y nuestro compromiso con el futuro de Houston.</p>
-            </div>
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">NOSOTROS</h2>
+            <p id="storyBody">La "Lucha" cubana fusionada con la potencia industrial de Houston 2026. Logística ética y eficiente.</p>
         </section>
 
-        <footer style="padding-top: 50px; text-align: center; border-top: 1px solid var(--border);">
+        <footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--border);">
             <p>© 2026 H-Town Haul & Harvest. <span style="font-weight: 950; color: var(--texas-orange);">Houston, TX.</span></p>
         </footer>
     </div>
 
     <script>
-        // Init Feather Icons
         feather.replace();
+        let sIdx = 0; const slds = document.querySelectorAll('.zapping-image');
+        setInterval(() => { slds.forEach(s => s.classList.remove('active')); sIdx = (sIdx + 1) % slds.length; slds[sIdx].classList.add('active'); }, 5000);
 
-        // Background Slideshow Logic
-        let slideIdx = 0;
-        const slides = document.querySelectorAll('.zapping-image');
-        function rotateBg() {
-            slides.forEach(s => s.classList.remove('active'));
-            slideIdx = (slideIdx + 1) % slides.length;
-            slides[slideIdx].classList.add('active');
-        }
-        setInterval(rotateBg, 5000);
-
-        // Calc Engine
         function calculate() {
             const miles = parseFloat(document.getElementById('mileage').value) || 0;
             const vol = parseFloat(document.getElementById('volume').value);
             const service = document.getElementById('service-type').value;
-
             let base = vol === 0.5 ? 275 : 650;
             let mult = service === 'roofing' ? 1.45 : (service === 'scrap' ? 0.6 : 1);
             const total = (base * mult) + (miles * 3.85) + 85;
@@ -135,16 +123,15 @@
 
         function sendWhatsApp() {
             const total = document.getElementById('price').innerText;
-            window.open(`https://wa.me/?text=Consulta%20H-Town%20Haul:%20${total}`);
+            window.open(`https://wa.me/?text=Query%20H-Town:%20${total}`);
         }
 
-        calculate();
-
         function toggleLang() {
-            // Already implemented logic in previous turns
             const cur = document.getElementById('langBtn').innerText;
             document.getElementById('langBtn').innerText = cur === 'EN' ? 'ES' : 'EN';
         }
+
+        calculate();
     </script>
 </body>
 
