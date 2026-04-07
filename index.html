@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-Town Haul & Harvest | Houston 2026</title>
+    
+    <meta property="og:title" content="H-Town Haul & Harvest">
+    <meta property="og:description" content="Houston's Strength, Cuban Inventiva.">
+    <meta property="og:image" content="https://yoyocubano.github.io/mikidea/htown_haul_harvest_logo_mockup_1770762934301.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo-container">
+            <img src="htown_haul_harvest_logo_mockup_1770762934301.png" alt="Logo" class="logo-img">
+            <div class="logo-text">H-TOWN <span class="highlight">HAUL & HARVEST</span></div>
+        </div>
+        <div class="nav-links">
+            <a href="#inicio" data-en="Home" data-es="Inicio">Inicio</a>
+            <a href="#cotizador" data-en="Calculator" data-es="Cotizador">Cotizador</a>
+            <button class="lang-switch" onclick="toggleLang()" id="langBtn">EN</button>
+        </div>
+    </nav>
+
+    <div class="hero-wrapper">
+        <header class="hero-overlay" id="inicio">
+            <div class="hero-content reveal active">
+                <h1 id="heroTitle">FUERZA <br><span class="highlight">E INVENTIVA</span></h1>
+                <p id="heroSubtitle">Resiliencia cubana integrada a la logística premium de Houston. Somos aliados en la recuperación de valor.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#cotizador" class="btn-primary" style="width: auto; padding: 1.2rem 2.5rem;" id="heroBtn">Cotizar Ahora</a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <section id="cotizador">
+        <div class="reveal">
+            <h2 id="calcTitle" style="text-align: center; font-size: 3rem; margin-bottom: 50px;">ESTIMADOR <span class="highlight">PRO</span></h2>
+        </div>
+
+        <div class="calc-grid">
+            <div class="glass-card reveal">
+                <div class="form-group">
+                    <label id="lblService">Tipo de Servicio</label>
+                    <select id="service-type" onchange="calculate()">
+                        <option value="junk" data-en="Junk Removal" data-es="Carga General">Carga General</option>
+                        <option value="construction" data-en="Construction Debris" data-es="Escombros">Escombros</option>
+                        <option value="roofing" data-en="Roofing Hauling" data-es="Acarreo Roofing">Acarreo Roofing</option>
+                        <option value="scrap" data-en="Scrap/Metal Harvest" data-es="Recolección Metal">Recolección Metal</option>
+                    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="form-group">
+                        <label id="lblMiles">Millas</label>
+                        <input type="number" id="mileage" value="15" oninput="calculate()">
+                    </div>
+                    <div class="form-group">
+                        <label id="lblLoad">Carga</label>
+                        <select id="volume" onchange="calculate()">
+                            <option value="0.5">1/2 Trailer</option>
+                            <option value="1.0" selected>Full Trailer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="sendWhatsApp()" id="btnSend">Enviar WhatsApp 📱</button>
+            </div>
+
+            <div class="glass-card reveal" style="text-align: center; display: flex; flex-direction: column; justify-content: center;">
+                <label id="lblTotal">Estimado Total</label>
+                <div class="price-main" id="price">$0.00</div>
+                <div style="margin-top: 20px; color: var(--grey-bright); font-weight: 700;">
+                    <span id="marketInfo">Houston Market Rate • 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 4rem 5%; background: #050505;">
+        <img src="htown_haul_harvest_logo_mockup_1770762934301.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
+        <p>© 2026 H-Town Haul & Harvest. <span class="highlight">Houston, TX.</span></p>
+    </footer>
+
+    <script>
+        let currentLang = 'es';
+
+        const translations = {
+            es: {
+                heroTitle: 'FUERZA <br><span class="highlight">E INVENTIVA</span>',
+                heroSubtitle: 'Resiliencia cubana integrada a la logística premium de Houston. Somos aliados en la recuperación de valor.',
+                heroBtn: 'Cotizar Ahora',
+                calcTitle: 'ESTIMADOR <span class="highlight">PRO</span>',
+                lblService: 'Tipo de Servicio',
+                lblMiles: 'Millas',
+                lblLoad: 'Carga',
+                btnSend: 'Enviar WhatsApp 📱',
+                lblTotal: 'Estimado Total',
+                marketInfo: 'Tarifa de Mercado Houston • 2026'
+            },
+            en: {
+                heroTitle: 'STRENGTH <br><span class="highlight">& INVENTIVA</span>',
+                heroSubtitle: 'Cuban resilience integrated with Houston\'s premium logistics. We are partners in value recovery.',
+                heroBtn: 'Get Quote',
+                calcTitle: 'PRO <span class="highlight">ESTIMATOR</span>',
+                lblService: 'Service Type',
+                lblMiles: 'Mileage',
+                lblLoad: 'Load Size',
+                btnSend: 'Send WhatsApp 📱',
+                lblTotal: 'Total Estimate',
+                marketInfo: 'Houston Market Rate • 2026'
+            }
+        };
+
+        function toggleLang() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('langBtn').innerText = currentLang === 'es' ? 'EN' : 'ES';
+            updateUI();
+        }
+
+        function updateUI() {
+            const t = translations[currentLang];
+            document.getElementById('heroTitle').innerHTML = t.heroTitle;
+            document.getElementById('heroSubtitle').innerText = t.heroSubtitle;
+            document.getElementById('heroBtn').innerText = t.heroBtn;
+            document.getElementById('calcTitle').innerHTML = t.calcTitle;
+            document.getElementById('lblService').innerText = t.lblService;
+            document.getElementById('lblMiles').innerText = t.lblMiles;
+            document.getElementById('lblLoad').innerText = t.lblLoad;
+            document.getElementById('btnSend').innerText = t.btnSend;
+            document.getElementById('lblTotal').innerText = t.lblTotal;
+            document.getElementById('marketInfo').innerText = t.marketInfo;
+
+            // Nav links
+            document.querySelectorAll('nav .nav-links a').forEach(a => {
+                a.innerText = a.getAttribute(`data-${currentLang}`);
+            });
+            
+            // Options
+            document.querySelectorAll('select option').forEach(opt => {
+                const text = opt.getAttribute(`data-${currentLang}`);
+                if(text) opt.innerText = text;
+            });
+        }
+
+        function calculate() {
+            const vol = parseFloat(document.getElementById('volume').value);
+            const miles = parseFloat(document.getElementById('mileage').value) || 0;
+            const service = document.getElementById('service-type').value;
+
+            let base = vol === 0.5 ? 275 : 650;
+            let mult = service === 'roofing' ? 1.4 : (service === 'scrap' ? 0.6 : 1);
+            
+            const total = (base * mult) + (miles * 3.85) + 85;
+            document.getElementById('price').innerText = `$${total.toFixed(2)}`;
+        }
+
+        function sendWhatsApp() {
+            const total = document.getElementById('price').innerText;
+            const msg = `*H-Town Haul & Harvest*%0AEstimate: ${total}%0A📍 Houston 2026`;
+            window.open(`https://wa.me/?text=${msg}`);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        calculate();
+    </script>
+</body>
+
+</html>
