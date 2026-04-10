@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aguilar-Guilarte Haul & Harvest | (713) 878-4827</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="stylesheet" href="styles.css?v=21">
     <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 </head>
 
 <body>
@@ -34,9 +36,10 @@
         <div class="nav-links">
             <a href="#home" class="nav-item active"><i data-feather="home"></i><span class="lang-text" data-es="Inicio" data-en="Home">Inicio</span></a>
             <a href="#services" class="nav-item"><i data-feather="truck"></i><span class="lang-text" data-es="Servicios" data-en="Services">Servicios</span></a>
-            <a href="#calc" class="nav-item"><i data-feather="calculator"></i><span class="lang-text" data-es="Cotizador" data-en="Estimator">Cotizador</span></a>
+            <a href="#calc" class="nav-item"><i data-feather="activity"></i><span class="lang-text" data-es="Cotizador" data-en="Estimator">Cotizador</span></a>
             <a href="#about" class="nav-item"><i data-feather="users"></i><span class="lang-text" data-es="Nosotros" data-en="About Us">Nosotros</span></a>
-            <a href="#reviews" class="nav-item"><i data-feather="star"></i><span class="lang-text" data-es="Reseñas" data-en="Reviews">Reseñas</span></a>
+            <a href="#reviews" class="nav-item"><i data-feather="message-square"></i><span class="lang-text" data-es="Reseñas" data-en="Reviews">Reseñas</span></a>
+            <a href="#legal" class="nav-item"><i data-feather="shield"></i><span class="lang-text" data-es="Legal" data-en="Legal">Legal</span></a>
         </div>
     </aside>
 
@@ -107,23 +110,21 @@
             </div>
         </section>
 
-        <section id="about" class="glass-card">
+        <section id="about" class="glass-card" style="position: relative; overflow: hidden;">
             <h2 class="lang-text" data-es="QUIÉNES SOMOS" data-en="ABOUT US" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 30px;">QUIÉNES SOMOS</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;" class="grid-res">
-                <div>
-                    <p class="readable-text lang-text" data-es="Aguilar-Guilarte Haul & Harvest nació de la unión de dos legados comprometidos con la excelencia. Somos una empresa familiar en Houston que cree en el trabajo duro, la honestidad y la eficiencia implacable. Cada despeje es para nosotros una oportunidad de demostrar nuestra pasión por lo que hacemos." data-en="Aguilar-Guilarte Haul & Harvest was born from the union of two legacies committed to excellence. We are a family-owned business in Houston that believes in hard work, honesty, and relentless efficiency. Every clearance is an opportunity for us to show our passion for what we do.">Aguilar-Guilarte Haul & Harvest nació de la unión de dos legados comprometidos con la excelencia. Somos una empresa familiar en Houston que cree en el trabajo duro, la honestidad y la eficiencia implacable. Cada despeje es para nosotros una oportunidad de demostrar nuestra pasión por lo que hacemos.</p>
-                    <div style="margin-top: 20px; border-left: 4px solid var(--texas-orange); padding-left: 20px;">
-                        <h4 style="font-style: italic; opacity: 0.9;">"Inventiva Cubana, Fuerza Americana"</h4>
-                    </div>
+            <div style="width: 100%;">
+                <div style="float: right; width: 45%; height: 400px; margin-left: 30px; margin-bottom: 20px; shape-outside: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 50%); background: url('web/t5.png') center/cover; border-radius: 40px; box-shadow: var(--shadow-pro); clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%, 0 50%);" class="about-img-flow"></div>
+                <p class="lang-text readable-text" data-es="Aguilar-Guilarte Haul & Harvest es más que un servicio de despeje; es la culminación de un legado familiar forjado en la disciplina y la visión. Fundada en Houston por la unión de las familias Aguilar y Guilarte, nuestra empresa nació para elevar los estándares de la industria del hauling. Entendemos que su propiedad es su templo, y por ello aplicamos una precisión quirúrgica en cada despeje de escombros, metales y muebles. Con raíces profundas en la cultura del trabajo duro y la inventiva cubana, combinamos la fuerza bruta necesaria para las grandes cargas con la delicadeza requerida para proteger su espacio. No solo limpiamos; restauramos el potencial de su entorno con la eficiencia que solo una familia comprometida puede ofrecer." data-en="Aguilar-Guilarte Haul & Harvest is more than a clearing service; it is the culmination of a family legacy forged in discipline and vision. Founded in Houston through the union of the Aguilar and Guilarte families, our company was born to elevate the standards of the hauling industry. We understand that your property is your temple, and that is why we apply surgical precision to every clearance of debris, metals, and furniture. With deep roots in the culture of hard work and Cuban ingenuity, we combine the raw strength needed for heavy loads with the delicacy required to protect your space. We don't just clear; we restore the potential of your environment with the efficiency that only a committed family can provide.">Aguilar-Guilarte Haul & Harvest es más que un servicio de despeje...</p>
+                <div style="margin-top: 30px; border-left: 4px solid var(--texas-orange); padding-left: 20px;">
+                    <h4 class="lang-text" data-es="'Inventiva Cubana, Fuerza Americana'" data-en="'Cuban Spirit, American Power'" style="font-style: italic; opacity: 0.9; font-size: 1.5rem;">"Inventiva Cubana, Fuerza Americana"</h4>
                 </div>
-                <div style="background: url('web/t5.png') center/cover; height: 350px; border-radius: 30px; box-shadow: var(--shadow-pro);"></div>
             </div>
+            <div style="clear: both;"></div>
         </section>
 
         <section id="reviews" class="glass-card">
             <h2 class="lang-text" data-es="LO QUE DICEN NUESTROS CLIENTES" data-en="WHAT OUR CUSTOMERS SAY" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 40px; text-align: center;">LO QUE DICEN NUESTROS CLIENTES</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <!-- Review 1 -->
                 <div class="review-card" style="padding: 2.5rem; background: rgba(255,255,255,0.02); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
                     <div style="color: #FFC107; margin-bottom: 15px;">
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
@@ -132,13 +133,12 @@
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                     </div>
-                    <p style="font-weight: 600; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"Se llevaron todo en menos de una hora. La troka que trajeron es enorme y el servicio fue impecable. Muy recomendados."</p>
+                    <p class="lang-text" data-es="'Se llevaron todo en menos de una hora. La troka que trajeron es enorme y el servicio fue impecable. Muy recomendados.'" data-en="'They took everything in less than an hour. The truck they brought is huge and the service was impeccable. Highly recommended.'">"Se llevaron todo en menos de una hora. La troka que trajeron es enorme y el servicio fue impecable. Muy recomendados."</p>
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <div style="width: 45px; height: 45px; background: linear-gradient(135deg, var(--texas-orange), #ff9800); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900;">CR</div>
                         <span style="font-weight: 900;">Carlos R.</span>
                     </div>
                 </div>
-                <!-- Review 2 -->
                 <div class="review-card" style="padding: 2.5rem; background: rgba(255,255,255,0.02); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
                     <div style="color: #FFC107; margin-bottom: 15px;">
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
@@ -147,11 +147,25 @@
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                     </div>
-                    <p style="font-weight: 600; font-style: italic; margin-bottom: 25px; line-height: 1.6;">"The best hauling service in Houston. Fair pricing and they actually care about your property. Great family business."</p>
+                    <p class="lang-text" data-es="'The best hauling service in Houston. Fair pricing and they actually care about your property. Great family business.'" data-en="'The best hauling service in Houston. Fair pricing and they actually care about your property. Great family business.'">"The best hauling service in Houston. Fair pricing and they actually care about your property. Great family business."</p>
                     <div style="display: flex; align-items: center; gap: 15px;">
                         <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #444, #1a1a1a); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900;">SM</div>
                         <span style="font-weight: 900;">Sarah Miller</span>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="legal" class="glass-card">
+            <h2 class="lang-text" data-es="POLÍTICA LEGAL & CUMPLIMIENTO" data-en="LEGAL POLICY & COMPLIANCE" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 30px;">POLÍTICA LEGAL & CUMPLIMIENTO</h2>
+            <div class="legal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div>
+                    <h4 class="lang-text" data-es="Licencias y Responsabilidad" data-en="Licenses & Liability" style="color: var(--texas-orange); margin-bottom: 10px;">Licencias y Responsabilidad</h4>
+                    <p class="lang-text" data-es="Aguilar-Guilarte Haul & Harvest está plenamente registrada y asegurada bajo las leyes del estado de Texas y las ordenanzas locales de Houston. Mantenemos una cobertura de responsabilidad civil de $1,000,000 para garantizar la protección total de su propiedad durante nuestras operaciones." data-en="Aguilar-Guilarte Haul & Harvest is fully registered and insured under Texas laws and Houston local ordinances. We maintain a $1,000,000 liability coverage to ensure total protection of your property during our operations.">Aguilar-Guilarte Haul & Harvest...</p>
+                </div>
+                <div>
+                    <h4 class="lang-text" data-es="Materiales Restringidos" data-en="Restricted Materials" style="color: var(--texas-orange); margin-bottom: 10px;">Materiales Restringidos</h4>
+                    <p class="lang-text" data-es="De acuerdo con las regulaciones de la EPA y el TCEQ, no recolectamos ni transportamos materiales peligrosos (Hazmat), solventes químicos, residuos médicos o tanques de combustible presurizados sin un acuerdo de manejo especial previo. La seguridad ambiental es nuestra prioridad." data-en="In accordance with EPA and TCEQ regulations, we do not collect or transport hazardous materials (Hazmat), chemical solvents, medical waste, or pressurized fuel tanks without a prior special handling agreement. Environmental safety is our priority.">De acuerdo con...</p>
                 </div>
             </div>
         </section>
@@ -170,15 +184,15 @@
     <div class="ai-chat-window" id="aiChat">
         <div class="ai-chat-header">
             <i data-feather="terminal" style="width: 20px;"></i>
-            <h3>Aguilar-Guilarte AI</h3>
+            <h3 class="lang-text" data-es="Aguilar-Guilarte AI" data-en="Aguilar-Guilarte AI">Aguilar-Guilarte AI</h3>
         </div>
         <div class="ai-chat-messages" id="chatMsgs">
-            <div class="chat-bubble ai-bubble">
-                ¡Hola! Soy el asistente de Mikidea. ¿En qué puedo ayudarte hoy con tu despeje en Houston?
+            <div class="chat-bubble ai-bubble lang-text" data-es="¡Hola! Soy el asistente neuronal de Aguilar-Guilarte. ¿Cómo puedo ayudarte hoy con tu despeje en Houston?" data-en="Hello! I am the neural assistant of Aguilar-Guilarte. How can I help you today with your clearance in Houston?">
+                ¡Hola! Soy el asistente neuronal de Aguilar-Guilarte. ¿Cómo puedo ayudarte hoy con tu despeje en Houston?
             </div>
         </div>
         <div class="ai-chat-input-area">
-            <input type="text" id="chatInput" placeholder="Escribe aquí..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <input type="text" id="chatInput" placeholder="..." onkeypress="if(event.key==='Enter') sendMessage()">
             <button onclick="sendMessage()"><i data-feather="send" style="width: 18px;"></i></button>
         </div>
     </div>
@@ -186,7 +200,6 @@
     <script>
         feather.replace();
         
-        // Navigation Active State
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', () => {
                 document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -198,18 +211,22 @@
         function toggleLang() {
             curLng = (curLng === 'es') ? 'en' : 'es';
             document.getElementById('langBtn').innerText = (curLng === 'es') ? 'EN' : 'ES';
+            
+            // Traducir todos los elementos con clase lang-text
             document.querySelectorAll('.lang-text').forEach(el => {
-                const en = el.getAttribute('data-en');
-                const es = el.getAttribute('data-es');
-                if (curLng === 'en' && en) el.innerHTML = en;
-                if (curLng === 'es' && es) el.innerHTML = es;
+                const translation = el.getAttribute(`data-${curLng}`);
+                if (translation) el.innerHTML = translation;
             });
+
+            // Traducir opciones de select
             document.querySelectorAll('option').forEach(opt => {
-                const en = opt.getAttribute('data-en');
-                const es = opt.getAttribute('data-es');
-                if (curLng === 'en' && en) opt.innerText = en;
-                if (curLng === 'es' && es) opt.innerText = es;
+                const translation = opt.getAttribute(`data-${curLng}`);
+                if (translation) opt.innerText = translation;
             });
+
+            // Traducir placeholder del bot
+            document.getElementById('chatInput').placeholder = (curLng === 'es') ? 'Escribe aquí...' : 'Type here...';
+
             calculate();
         }
 
@@ -225,18 +242,22 @@
         function calculate() {
             const miles = parseFloat(document.getElementById('mileage').value) || 0;
             const vol = parseFloat(document.getElementById('volume').value) || 1.0;
-            const service = document.getElementById('service-type').value;
+            const serviceEl = document.getElementById('service-type');
+            const service = serviceEl.value;
+            const serviceName = serviceEl.options[serviceEl.selectedIndex].text;
+            
             let base = vol === 0.5 ? 275 : 650;
             let mult = service === 'roofing' ? 1.45 : (service === 'scrap' ? 0.6 : 1);
             const total = (base * mult) + (miles * 3.85) + 85;
             document.getElementById('price').innerText = `$${total.toFixed(2)}`;
+            return { total: total.toFixed(2), service: serviceName };
         }
 
         function sendWhatsApp() {
-            const total = document.getElementById('price').innerText;
+            const calc = calculate();
             const msg = (curLng === 'es') 
-                ? `Hola! Deseo el servicio de despeje v20. Estimado: ${total}` 
-                : `Hello! I need your clearance service v20. Estimate: ${total}`;
+                ? `Hola! Deseo el servicio de ${calc.service}. Estimado: $${calc.total}` 
+                : `Hello! I need ${calc.service} service. Estimate: $${calc.total}`;
             window.open(`https://wa.me/17138784827?text=${encodeURIComponent(msg)}`);
         }
 
@@ -264,22 +285,53 @@
             setTimeout(() => {
                 const aiDiv = document.createElement('div');
                 aiDiv.className = 'chat-bubble ai-bubble';
-                aiDiv.innerText = "Pensando...";
+                aiDiv.innerText = (curLng === 'es') ? "Pensando..." : "Thinking...";
                 msgs.appendChild(aiDiv);
                 msgs.scrollTop = msgs.scrollHeight;
 
                 setTimeout(() => {
-                    let response = "Entendido. Procesando tu solicitud con Aguilar-Guilarte AI...";
-                    if (text.toLowerCase().includes('cotiza') || text.toLowerCase().includes('precio')) {
-                        response = "Calculando estimado... [21st-sdk Tool: calculate_estimate] -> El costo aproximado es de $325.00 para una carga media. ¿Te gustaría agendar?";
-                    } else if (text.toLowerCase().includes('hola')) {
-                        response = "¡Hola! Estoy listo para ayudarte con basura, escombros o metales en todo Houston.";
+                    const calc = calculate();
+                    let response = "";
+                    
+                    const triggerWords = {
+                        price: ['precio', 'cuanto', 'cuesta', 'cost', 'price', 'estimate', 'cotiz'],
+                        about: ['quienes', 'nosotros', 'aguilar', 'about', 'who'],
+                        legal: ['legal', 'ley', 'seguro', 'hazmat', 'policy']
+                    };
+
+                    const lowerText = text.toLowerCase();
+                    
+                    if (triggerWords.price.some(w => lowerText.includes(w))) {
+                        response = (curLng === 'es') 
+                            ? `Basado en el calculador, el servicio de ${calc.service} tiene un estimado de $${calc.total}. ¿Te gustaría que te contactara un humano por WhatsApp?`
+                            : `Based on the estimator, the ${calc.service} service has an estimate of $${calc.total}. Would you like a human to contact you via WhatsApp?`;
+                    } else if (triggerWords.about.some(w => lowerText.includes(w))) {
+                        response = (curLng === 'es')
+                            ? "Somos Aguilar-Guilarte, una unión familiar con inventiva cubana y fuerza americana, expertos en despeje industrial en Houston."
+                            : "We are Aguilar-Guilarte, a family union with Cuban spirit and American power, experts in industrial clearance in Houston.";
+                    } else if (triggerWords.legal.some(w => lowerText.includes(w))) {
+                        response = (curLng === 'es')
+                            ? "Operamos bajo las leyes de Houston y Texas. Estamos asegurados, pero recuerda que no manejamos materiales peligrosos (Hazmat) sin cita previa."
+                            : "We operate under Houston and Texas laws. We are insured, but remember we don't handle hazardous materials (Hazmat) without prior notice.";
+                    } else {
+                        response = (curLng === 'es')
+                            ? "Entendido. Soy Aguilar-Guilarte AI. Puedo ayudarte con precios, servicios y detalles de nuestra empresa. ¿Qué más deseas saber?"
+                            : "Got it. I am Aguilar-Guilarte AI. I can help you with prices, services, and company details. What else would you like to know?";
                     }
+
                     aiDiv.innerText = response;
                     msgs.scrollTop = msgs.scrollHeight;
                 }, 1500);
             }, 500);
         }
+
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(".glass-card", {
+            duration: 1.2,
+            y: 100, opacity: 0, stagger: 0.3, ease: "power4.out",
+            scrollTrigger: { trigger: ".glass-card", start: "top 85%" }
+        });
+        gsap.to(".logo-corner img", { y: -15, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
 
         calculate();
     </script>

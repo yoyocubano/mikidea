@@ -119,19 +119,11 @@ body { background: var(--bg-white); color: var(--text-main); }
 /* Responsividad Móvil */
 @media (max-width: 1000px) {
     .mobile-top-bar { display: flex; }
-    .sidebar {
-        top: auto;
-        bottom: 15px;
-        left: 15px;
-        width: calc(100% - 30px);
-        height: 75px;
-        flex-direction: row;
-        padding: 0;
-        border-radius: 18px;
-    }
-    .content-wrapper { margin-left: 0; padding: 100px 15px 120px 15px; }
-    .hero-clean h1 { font-size: 3.2rem; }
-    .glass-card { padding: 3rem 1.5rem; }
+    .sidebar { display: none; }
+    .content-wrapper { margin-left: 0; padding: 100px 20px 60px 20px; }
+    .hero-clean h1 { font-size: 2.8rem; }
+    .glass-card { padding: 2.5rem 1.2rem; }
+    .grid-res { grid-template-columns: 1fr !important; }
 }
 
 /* AI Chat Integration Styles */
