@@ -174,6 +174,7 @@ body { background: var(--bg-white); color: var(--text-main); }
     .hero-clean h1 { font-size: 2.8rem; }
     .glass-card { padding: 2.5rem 1.2rem; }
     .grid-res { grid-template-columns: 1fr !important; }
+    .pc-only-lang { display: none !important; }
 }
 
 /* AI Chat Integration Styles */
