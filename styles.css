@@ -133,3 +133,223 @@ body { background: var(--bg-white); color: var(--text-main); }
     .hero-clean h1 { font-size: 3.2rem; }
     .glass-card { padding: 3rem 1.5rem; }
 }
+
+/* AI Chat Integration Styles */
+.ai-chat-launcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background: var(--texas-orange);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(239, 108, 0, 0.4);
+    z-index: 9999;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ai-chat-launcher:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.ai-chat-window {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    width: 380px;
+    height: 550px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    z-index: 9998;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.4s ease-out;
+}
+
+.ai-chat-window.active {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.ai-chat-header {
+    background: linear-gradient(135deg, var(--texas-orange), #FF9800);
+    padding: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ai-chat-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+.ai-chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.chat-bubble {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 85%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.ai-bubble {
+    align-self: flex-start;
+    background: rgba(0,0,0,0.05);
+    color: #333;
+    border-bottom-left-radius: 4px;
+}
+
+.user-bubble {
+    align-self: flex-end;
+    background: var(--texas-orange);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.ai-chat-input-area {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    gap: 10px;
+}
+
+.ai-chat-input-area input {
+    flex: 1;
+    border: none;
+    background: #f4f4f4;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    outline: none;
+}
+
+.ai-chat-input-area button {
+    background: var(--texas-orange);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* STRIKING UI ENHANCEMENTS */
+
+/* Custom Industrial Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--texas-orange);
+    border-radius: 5px;
+}
+
+/* Animated Gradient Header */
+.hero-clean h1 {
+    background: linear-gradient(90deg, #fff, var(--texas-orange), #fff);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: shine 5s linear infinite;
+    text-shadow: 0 10px 30px rgba(239, 108, 0, 0.2);
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
+}
+
+/* Floating Logo Animation */
+.logo-corner img, .mobile-top-bar img {
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Advanced Card Hover */
+.glass-card {
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    border-color: var(--texas-orange);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Glowing CTAs */
+.btn-cta {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 0 rgba(239, 108, 0, 0);
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    box-shadow: 0 0 30px rgba(239, 108, 0, 0.6);
+    transform: scale(1.05);
+}
+
+.btn-cta::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.1);
+    transform: rotate(45deg);
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.btn-cta:hover::after {
+    left: 120%;
+    opacity: 1;
+}
+
+/* Background Particle Simulation Effect */
+.zapping-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+    pointer-events: none;
+}

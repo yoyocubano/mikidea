@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-Town Haul & Harvest | (713) 878-4827</title>
+    <title>Aguilar-Guilarte Haul & Harvest | (713) 878-4827</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=20">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body>
+    <div style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: radial-gradient(circle at 10% 10%, rgba(239, 108, 0, 0.05) 0%, transparent 50%); pointer-events: none; z-index: 5000;"></div>
     <div class="zapping-container">
         <div class="zapping-image active" style="background-image: url('web/t2.png');"></div>
         <div class="zapping-image" style="background-image: url('web/t4.png');"></div>
@@ -21,13 +22,13 @@
     </div>
 
     <header class="mobile-top-bar" style="height: 75px; justify-content: space-between;">
-        <img src="htown_haul_harvest_logo_mockup_1770762934301.png" alt="Logo">
+        <img src="aguilar_guilarte_logo.png" alt="Logo">
         <a href="tel:+17138784827" class="lang-text" data-es="LLAMAR AHORA" data-en="CALL NOW" style="text-decoration: none; font-weight: 950; color: var(--texas-orange); border: 2px solid var(--texas-orange); padding: 5px 10px; border-radius: 10px;">LLAMAR AHORA</a>
     </header>
 
     <aside class="sidebar">
         <div class="logo-corner" style="margin-bottom: 2rem;">
-            <img src="htown_haul_harvest_logo_mockup_1770762934301.png" alt="Logo" style="width: 140px;">
+            <img src="aguilar_guilarte_logo.png" alt="Logo" style="width: 140px;">
             <a href="tel:+17138784827" style="color: var(--texas-orange); font-weight: 950; font-size: 1.2rem; text-decoration: none; display: block; margin-top: 10px;">(713) 878-4827</a>
         </div>
         <div class="nav-links">
@@ -41,8 +42,8 @@
         <button class="lang-btn" onclick="toggleLang()" id="langBtn" style="position: fixed; top: 30px; right: 30px; z-index: 6000; background: rgba(0,0,0,0.7); color: white; padding: 12px 24px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.2); font-weight: 950; cursor: pointer; backdrop-filter: blur(10px);">EN</button>
 
         <header id="home" class="hero-clean" style="min-height: 50vh;">
-            <p class="lang-text" data-es="Soluciones Reales en Houston" data-en="Real Solutions in Houston" style="text-transform: uppercase; font-weight: 950; color: #FF9800; letter-spacing: 3px; margin-bottom: 15px;">Soluciones Reales en Houston</p>
-            <h1 class="lang-text" data-es="CERO DESORDEN. <br>PURA EFICIENCIA." data-en="ZERO CLUTTER. <br>PURE EFFICIENCY.">CERO DESORDEN. <br>PURA EFICIENCIA.</h1>
+            <p class="lang-text" data-es="Aguilar - Guilarte Haul & Harvest" data-en="Aguilar - Guilarte Haul & Harvest" style="text-transform: uppercase; font-weight: 950; color: #FF9800; letter-spacing: 3px; margin-bottom: 15px;">Aguilar - Guilarte Haul & Harvest</p>
+            <h1 class="lang-text" data-es="ELEGANCIA EN EL DESPEJE.<br>FUERZA EN LA COSECHA." data-en="CLEARANCE ELEGANCE.<br>STRENGTH IN HARVEST.">ELEGANCIA EN EL DESPEJE.<br>FUERZA EN LA COSECHA.</h1>
             <p class="readable-text lang-text" data-es="Liberamos tu propiedad de escombros, muebles viejos y chatarra en tiempo récord. Tú recuperas tu espacio, nosotros el trabajo duro." data-en="We clear your property of debris, old furniture, and scrap in record time. You reclaim your space, we take the heavy load." style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Liberamos tu propiedad de escombros, muebles viejos y chatarra en tiempo récord. Tú recuperas tu espacio, nosotros el trabajo duro.</p>
             <a href="tel:+17138784827" class="btn-cta lang-text" data-es="COTIZACIÓN GRATIS: (713) 878-4827" data-en="FREE ESTIMATE: (713) 878-4827" style="margin-top: 30px; font-size: 1.2rem;">COTIZACIÓN GRATIS: (713) 878-4827</a>
         </header>
@@ -52,7 +53,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                 <div style="padding: 2.5rem; background: rgba(0,0,0,0.03); border-radius: 20px;">
                     <i data-feather="trash-2" style="color: var(--texas-orange); margin-bottom: 15px;"></i>
-                    <h4 class="lang-text" data-es="Busura y Escombros" data-en="Junk & Debris">Basura y Escombros</h4>
+                    <h4 class="lang-text" data-es="Basura y Escombros" data-en="Junk & Debris">Basura y Escombros</h4>
                     <p class="lang-text" data-es="Limpieza integral garantizada." data-en="Guaranteed full cleanup.">Limpieza integral garantizada.</p>
                 </div>
                 <div style="padding: 2.5rem; background: rgba(0,0,0,0.03); border-radius: 20px;">
@@ -110,29 +111,45 @@
         </footer>
     </div>
 
+    <!-- AI Assistant Widget -->
+    <div class="ai-chat-launcher" onclick="toggleChat()">
+        <i data-feather="message-circle"></i>
+    </div>
+
+    <div class="ai-chat-window" id="aiChat">
+        <div class="ai-chat-header">
+            <i data-feather="terminal" style="width: 20px;"></i>
+            <h3>Aguilar-Guilarte AI</h3>
+        </div>
+        <div class="ai-chat-messages" id="chatMsgs">
+            <div class="chat-bubble ai-bubble">
+                ¡Hola! Soy el asistente de Mikidea. ¿En qué puedo ayudarte hoy con tu despeje en Houston?
+            </div>
+        </div>
+        <div class="ai-chat-input-area">
+            <input type="text" id="chatInput" placeholder="Escribe aquí..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()"><i data-feather="send" style="width: 18px;"></i></button>
+        </div>
+    </div>
+
     <script>
         feather.replace();
         let curLng = 'es';
         function toggleLang() {
             curLng = (curLng === 'es') ? 'en' : 'es';
             document.getElementById('langBtn').innerText = (curLng === 'es') ? 'EN' : 'ES';
-            
-            // Traducir spans y divs
             document.querySelectorAll('.lang-text').forEach(el => {
                 const en = el.getAttribute('data-en');
                 const es = el.getAttribute('data-es');
                 if (curLng === 'en' && en) el.innerHTML = en;
                 if (curLng === 'es' && es) el.innerHTML = es;
             });
-
-            // Traducir opciones del SELECT
             document.querySelectorAll('option').forEach(opt => {
                 const en = opt.getAttribute('data-en');
                 const es = opt.getAttribute('data-es');
                 if (curLng === 'en' && en) opt.innerText = en;
                 if (curLng === 'es' && es) opt.innerText = es;
             });
-
             calculate();
         }
 
@@ -163,8 +180,48 @@
             window.open(`https://wa.me/17138784827?text=${encodeURIComponent(msg)}`);
         }
 
+        function toggleChat() {
+            const chat = document.getElementById('aiChat');
+            chat.classList.toggle('active');
+            if(chat.classList.contains('active')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const msgs = document.getElementById('chatMsgs');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const userDiv = document.createElement('div');
+            userDiv.className = 'chat-bubble user-bubble';
+            userDiv.innerText = text;
+            msgs.appendChild(userDiv);
+            input.value = '';
+            msgs.scrollTop = msgs.scrollHeight;
+
+            setTimeout(() => {
+                const aiDiv = document.createElement('div');
+                aiDiv.className = 'chat-bubble ai-bubble';
+                aiDiv.innerText = "Pensando...";
+                msgs.appendChild(aiDiv);
+                msgs.scrollTop = msgs.scrollHeight;
+
+                setTimeout(() => {
+                    let response = "Entendido. Procesando tu solicitud con Aguilar-Guilarte AI...";
+                    if (text.toLowerCase().includes('cotiza') || text.toLowerCase().includes('precio')) {
+                        response = "Calculando estimado... [21st-sdk Tool: calculate_estimate] -> El costo aproximado es de $325.00 para una carga media. ¿Te gustaría agendar?";
+                    } else if (text.toLowerCase().includes('hola')) {
+                        response = "¡Hola! Estoy listo para ayudarte con basura, escombros o metales en todo Houston.";
+                    }
+                    aiDiv.innerText = response;
+                    msgs.scrollTop = msgs.scrollHeight;
+                }, 1500);
+            }, 500);
+        }
+
         calculate();
     </script>
 </body>
-
 </html>
