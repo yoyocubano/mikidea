@@ -76,7 +76,7 @@
             
             <div style="display: flex; gap: 20px; margin-top: 40px;" class="hero-btns">
                 <a href="tel:+17138784827" class="btn-cta lang-text" data-es="LLAMAR AHORA: (713) 878-4827" data-en="CALL NOW: (713) 878-4827" style="font-size: 1.1rem; padding: 1.2rem 2.8rem;">LLAMAR AHORA: (713) 878-4827</a>
-                <a href="#calc" class="nav-item lang-text" data-es="VER COTIZADOR" data-en="VIEW ESTIMATOR" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: white; padding: 1.2rem 2.5rem; border-radius: 16px; text-decoration: none; font-weight: 950; border: 1px solid rgba(255,255,255,0.2);">VER COTIZADOR</a>
+                <a href="#calc" class="lang-text" data-es="VER COTIZADOR" data-en="VIEW ESTIMATOR" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: white; padding: 1.2rem 2.5rem; border-radius: 16px; text-decoration: none; font-weight: 950; border: 1px solid rgba(255,255,255,0.2);">VER COTIZADOR</a>
             </div>
         </header>
 
@@ -245,29 +245,50 @@
             });
         });
 
+        const COMPANY_KNOWLEDGE = {
+            es: {
+                history: "Aguilar-Guilarte es una unión familiar establecida en Houston en 2026. Fundada por las familias Aguilar y Guilarte, combinamos la disciplina industrial con la inventiva cubana.",
+                legal: "Estamos blindados por pólizas de $1M de responsabilidad civil y cumplimos con el Capítulo 39 de Houston (Solid Waste) y la TCEQ. No manejamos HAZMAT.",
+                services: "Ofrecemos: Recolección Residencial (muebles, garage), Limpieza Comercial (oficinas, almacenes), Construcción (escombro, madera) y Limpieza de Jardín.",
+                pricing_intro: "Para darte un precio exacto, necesito saber: 1. ¿Qué servicio necesitas? 2. ¿Cuánto material es? y 3. ¿A qué distancia estamos de tu ubicación?",
+                steps: {
+                    service: "¿Cuál de estos servicios necesitas? [Residencial, Comercial, Construcción, Jardín]",
+                    size: "Entendido. ¿Qué tamaño calculas que tiene la carga? [Pequeño (1/2 Troka), Grande (Full Troka)]",
+                    distance: "Perfecto. ¿A cuántas millas estás de nuestra base en Houston?",
+                    final: "Calculando presupuesto..."
+                }
+            },
+            en: {
+                history: "Aguilar-Guilarte is a family union established in Houston in 2026. Founded by the Aguilar and Guilarte families, we combine industrial discipline with Cuban ingenuity.",
+                legal: "We are protected by $1M liability policies and comply with Houston Chapter 39 (Solid Waste) and TCEQ. We do not handle HAZMAT.",
+                services: "We offer: Residential Pickup (furniture, garage), Commercial Cleaning (offices, warehouses), Construction (debris, wood), and Yard Cleanup.",
+                pricing_intro: "To give you an exact price, I need to know: 1. What service do you need? 2. How much material is it? and 3. How far are we from your location?",
+                steps: {
+                    service: "Which service do you need? [Residential, Commercial, Construction, Yard]",
+                    size: "Got it. What size would you estimate the load is? [Small (1/2 Truck), Large (Full Truck)]",
+                    distance: "Perfect. How many miles are you from our base in Houston?",
+                    final: "Calculating quote..."
+                }
+            }
+        };
+
+        let chatState = { step: 'IDLE', data: {} };
         let curLng = 'es';
+
         function toggleLang() {
             curLng = (curLng === 'es') ? 'en' : 'es';
             const btnText = (curLng === 'es') ? 'EN' : 'ES';
-            
             if(document.getElementById('langBtn')) document.getElementById('langBtn').innerText = btnText;
             if(document.getElementById('langBtnMobile')) document.getElementById('langBtnMobile').innerText = btnText;
-            
-            // Traducir todos los elementos con clase lang-text
             document.querySelectorAll('.lang-text').forEach(el => {
-                const translation = el.getAttribute(`data-${curLng}`);
-                if (translation) el.innerHTML = translation;
+                const trans = el.getAttribute(`data-${curLng}`);
+                if (trans) el.innerHTML = trans;
             });
-
-            // Traducir opciones de select
             document.querySelectorAll('option').forEach(opt => {
-                const translation = opt.getAttribute(`data-${curLng}`);
-                if (translation) opt.innerText = translation;
+                const trans = opt.getAttribute(`data-${curLng}`);
+                if (trans) opt.innerText = trans;
             });
-
-            // Traducir placeholder del bot
             document.getElementById('chatInput').placeholder = (curLng === 'es') ? 'Escribe aquí...' : 'Type here...';
-
             calculate();
         }
 
@@ -286,7 +307,6 @@
             const serviceEl = document.getElementById('service-type');
             const service = serviceEl.value;
             const serviceName = serviceEl.options[serviceEl.selectedIndex].text;
-            
             let base = vol === 0.5 ? 275 : 650;
             let mult = service === 'roofing' ? 1.45 : (service === 'scrap' ? 0.6 : 1);
             const total = (base * mult) + (miles * 3.85) + 85;
@@ -296,18 +316,14 @@
 
         function sendWhatsApp() {
             const calc = calculate();
-            const msg = (curLng === 'es') 
-                ? `Hola! Deseo el servicio de ${calc.service}. Estimado: $${calc.total}` 
-                : `Hello! I need ${calc.service} service. Estimate: $${calc.total}`;
+            const msg = (curLng === 'es') ? `Hola! Deseo el servicio de ${calc.service}. Estimado: $${calc.total}` : `Hello! I need ${calc.service} service. Estimate: $${calc.total}`;
             window.open(`https://wa.me/17138784827?text=${encodeURIComponent(msg)}`);
         }
 
         function toggleChat() {
             const chat = document.getElementById('aiChat');
             chat.classList.toggle('active');
-            if(chat.classList.contains('active')) {
-                document.getElementById('chatInput').focus();
-            }
+            if(chat.classList.contains('active')) document.getElementById('chatInput').focus();
         }
 
         function toggleMobileMenu() {
@@ -318,79 +334,65 @@
         async function sendMessage() {
             const input = document.getElementById('chatInput');
             const msgs = document.getElementById('chatMsgs');
-            const text = input.value.trim();
-            if (!text) return;
+            const utext = input.value.trim().toLowerCase();
+            if(!utext) return;
 
-            const userDiv = document.createElement('div');
-            userDiv.className = 'chat-bubble user-bubble';
-            userDiv.innerText = text;
-            msgs.appendChild(userDiv);
+            const udiv = document.createElement('div');
+            udiv.className = 'chat-bubble user-bubble';
+            udiv.innerText = input.value;
+            msgs.appendChild(udiv);
             input.value = '';
             msgs.scrollTop = msgs.scrollHeight;
 
+            const adiv = document.createElement('div');
+            adiv.className = 'chat-bubble ai-bubble';
+            adiv.innerText = '...';
+            msgs.appendChild(adiv);
+            
             setTimeout(() => {
-                const aiDiv = document.createElement('div');
-                aiDiv.className = 'chat-bubble ai-bubble';
-                aiDiv.innerText = (curLng === 'es') ? "Pensando..." : "Thinking...";
-                msgs.appendChild(aiDiv);
-                msgs.scrollTop = msgs.scrollHeight;
-
-                setTimeout(() => {
-                    const calc = calculate();
-                    let response = "";
-                    
-                    const triggerWords = {
-                        price: ['precio', 'cuanto', 'cuesta', 'cost', 'price', 'estimate', 'cotiz'],
-                        about: ['quienes', 'nosotros', 'aguilar', 'about', 'who'],
-                        legal: ['legal', 'ley', 'seguro', 'hazmat', 'policy']
-                    };
-
-                    const lowerText = text.toLowerCase();
-                    
-                    if (triggerWords.price.some(w => lowerText.includes(w))) {
-                        response = (curLng === 'es') 
-                            ? `Basado en el calculador, el servicio de ${calc.service} tiene un estimado de $${calc.total}. ¿Te gustaría que te contactara un humano por WhatsApp?`
-                            : `Based on the estimator, the ${calc.service} service has an estimate of $${calc.total}. Would you like a human to contact you via WhatsApp?`;
-                    } else if (triggerWords.about.some(w => lowerText.includes(w))) {
-                        response = (curLng === 'es')
-                            ? "Somos Aguilar-Guilarte, una unión familiar con inventiva cubana y fuerza americana, expertos en despeje industrial en Houston."
-                            : "We are Aguilar-Guilarte, a family union with Cuban spirit and American power, experts in industrial clearance in Houston.";
-                    } else if (triggerWords.legal.some(w => lowerText.includes(w))) {
-                        response = (curLng === 'es')
-                            ? "Operamos bajo las leyes de Houston y Texas. Estamos asegurados, pero recuerda que no manejamos materiales peligrosos (Hazmat) sin cita previa."
-                            : "We operate under Houston and Texas laws. We are insured, but remember we don't handle hazardous materials (Hazmat) without prior notice.";
+                let response = "";
+                const k = COMPANY_KNOWLEDGE[curLng];
+                if (chatState.step === 'IDLE') {
+                    if (utext.includes('precio') || utext.includes('costo') || utext.includes('cuanto') || utext.includes('price') || utext.includes('cost') || utext.includes('how much') || utext.includes('cotiz')) {
+                        chatState.step = 'WAIT_SERVICE';
+                        response = k.steps.service;
+                    } else if (utext.includes('quienes') || utext.includes('nosotros') || utext.includes('historia') || utext.includes('who') || utext.includes('about') || utext.includes('history')) {
+                        response = k.history;
+                    } else if (utext.includes('legal') || utext.includes('seguro') || utext.includes('licencia') || utext.includes('insurance') || utext.includes('permit') || utext.includes('hazmat')) {
+                        response = k.legal;
+                    } else if (utext.includes('servicio') || utext.includes('hacen') || utext.includes('offer') || utext.includes('service')) {
+                        response = k.services;
                     } else {
-                        response = (curLng === 'es')
-                            ? "Entendido. Soy Aguilar-Guilarte AI. Puedo ayudarte con precios, servicios y detalles de nuestra empresa. ¿Qué más deseas saber?"
-                            : "Got it. I am Aguilar-Guilarte AI. I can help you with prices, services, and company details. What else would you like to know?";
+                        response = (curLng === 'es') ? "Hola, soy el asistente de Aguilar-Guilarte. ¿Cómo podemos ayudarte hoy?" : "Hi, I'm the Aguilar-Guilarte assistant. How can we help you today?";
                     }
-
-                    aiDiv.innerText = response;
-                    msgs.scrollTop = msgs.scrollHeight;
-                }, 1500);
-            }, 500);
+                } else if (chatState.step === 'WAIT_SERVICE') {
+                    chatState.data.svc = utext.includes('res') ? 'residential' : (utext.includes('com') ? 'commercial' : (utext.includes('con') ? 'construction' : 'default'));
+                    chatState.step = 'WAIT_SIZE';
+                    response = k.steps.size;
+                } else if (chatState.step === 'WAIT_SIZE') {
+                    chatState.data.vol = (utext.includes('peq') || utext.includes('sma') || utext.includes('1/2')) ? 0.5 : 1.0;
+                    chatState.step = 'WAIT_DIST';
+                    response = k.steps.distance;
+                } else if (chatState.step === 'WAIT_DIST') {
+                    const miles = parseFloat(utext) || 10;
+                    const base = chatState.data.vol === 0.5 ? 275 : 650;
+                    let mult = chatState.data.svc === 'construction' ? 1.45 : (chatState.data.svc === 'default' ? 1.0 : 0.8);
+                    const total = (base * mult) + (miles * 3.85) + 85;
+                    response = (curLng === 'es') ? `Presupuesto estimado: $${total.toFixed(2)}. ¿Deseas enviarme estos datos por WhatsApp?` : `Estimated quote: $${total.toFixed(2)}. Would you like to send this to us via WhatsApp?`;
+                    chatState.step = 'IDLE';
+                }
+                adiv.innerText = response;
+                msgs.scrollTop = msgs.scrollHeight;
+            }, 800);
         }
 
         gsap.registerPlugin(ScrollTrigger);
-        
-        // Animación individual por sección para asegurar visibilidad al scrollear
         document.querySelectorAll(".glass-card").forEach(box => {
-            gsap.from(box, {
-                duration: 1.2,
-                y: 50,
-                opacity: 0,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: box,
-                    start: "top 90%",
-                    toggleActions: "play none none none"
-                }
-            });
+            gsap.from(box, { duration: 1.2, y: 50, opacity: 0, ease: "power3.out", scrollTrigger: { trigger: box, start: "top 90%", toggleActions: "play none none none" } });
         });
-
         gsap.to(".logo-corner img, .mobile-top-bar img", { y: -10, duration: 2, repeat: -1, yoyo: true, ease: "sine.inOut" });
-
         calculate();
     </script>
 </body>
+
 </html>
