@@ -23,10 +23,31 @@
         <div class="zapping-image" style="background-image: url('web/t6.png');"></div>
     </div>
 
-    <header class="mobile-top-bar" style="height: 75px; justify-content: space-between;">
-        <img src="aguilar_guilarte_logo.png" alt="Logo">
-        <a href="tel:+17138784827" class="lang-text" data-es="LLAMAR AHORA" data-en="CALL NOW" style="text-decoration: none; font-weight: 950; color: var(--texas-orange); border: 2px solid var(--texas-orange); padding: 5px 10px; border-radius: 10px;">LLAMAR AHORA</a>
+    <header class="mobile-top-bar" style="height: 75px; justify-content: space-between; align-items: center; padding: 0 20px;">
+        <img src="aguilar_guilarte_logo.png" alt="Logo" onclick="toggleMobileMenu()" style="cursor: pointer; height: 50px;">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="tel:+17138784827" class="lang-text" data-es="LLAMAR" data-en="CALL" style="text-decoration: none; font-weight: 950; color: var(--texas-orange); border: 1px solid var(--texas-orange); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem;">LLAMAR</a>
+            <i data-feather="menu" onclick="toggleMobileMenu()" style="color: var(--texas-orange); cursor: pointer;"></i>
+        </div>
     </header>
+
+    <div id="mobileDrawer" class="mobile-drawer">
+        <div class="drawer-header">
+            <img src="aguilar_guilarte_logo.png" alt="Logo" style="width: 120px;">
+            <i data-feather="x" onclick="toggleMobileMenu()" style="cursor: pointer; color: white;"></i>
+        </div>
+        <div class="drawer-links">
+            <a href="#home" class="drawer-item" onclick="toggleMobileMenu()"><i data-feather="home"></i><span class="lang-text" data-es="Inicio" data-en="Home">Inicio</span></a>
+            <a href="#services" class="drawer-item" onclick="toggleMobileMenu()"><i data-feather="truck"></i><span class="lang-text" data-es="Servicios" data-en="Services">Servicios</span></a>
+            <a href="#calc" class="drawer-item" onclick="toggleMobileMenu()"><i data-feather="activity"></i><span class="lang-text" data-es="Cotizador" data-en="Estimator">Cotizador</span></a>
+            <a href="#about" class="drawer-item" onclick="toggleMobileMenu()"><i data-feather="users"></i><span class="lang-text" data-es="Nosotros" data-en="About Us">Nosotros</span></a>
+            <a href="#reviews" class="drawer-item" onclick="toggleMobileMenu()"><i data-feather="message-square"></i><span class="lang-text" data-es="Reseñas" data-en="Reviews">Reseñas</span></a>
+            <a href="#legal" class="drawer-item" onclick="toggleMobileMenu()"><i data-feather="shield"></i><span class="lang-text" data-es="Legal" data-en="Legal">Legal</span></a>
+        </div>
+        <div style="margin-top: auto; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="tel:+17138784827" style="color: var(--texas-orange); font-weight: 950; text-decoration: none; font-size: 1.2rem;">(713) 878-4827</a>
+        </div>
+    </div>
 
     <aside class="sidebar">
         <div class="logo-corner" style="margin-bottom: 2rem;">
@@ -144,10 +165,10 @@
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                     </div>
-                    <p class="lang-text" data-es="'Se llevaron todo en menos de una hora. La troka que trajeron es enorme y el servicio fue impecable. Muy recomendados.'" data-en="'They took everything in less than an hour. The truck they brought is huge and the service was impeccable. Highly recommended.'">"Se llevaron todo en menos de una hora. La troka que trajeron es enorme y el servicio fue impecable. Muy recomendados."</p>
+                    <p class="lang-text" data-es="'Acababa de mudarme a Sugar Land y tenía el garaje lleno de cajas y muebles rotos. Vinieron el mismo día, fueron súper educados y el precio fue justo. Da gusto ver negocios familiares tan serios.'" data-en="'I had just moved to Sugar Land and my garage was full of boxes and broken furniture. They came the same day, they were super polite and the price was fair. It's nice to see family businesses so serious.'">"Acababa de mudarme a Sugar Land y tenía el garaje lleno de cajas y muebles rotos. Vinieron el mismo día, fueron súper educados y el precio fue justo. Da gusto ver negocios familiares tan serios."</p>
                     <div style="display: flex; align-items: center; gap: 15px; margin-top: 20px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, var(--texas-orange), #ff9800); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900;">CR</div>
-                        <span style="font-weight: 900; color: white;">Carlos R. • Houston, TX</span>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #1e3a8a, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900;">M</div>
+                        <span style="font-weight: 900; color: white;">Miguel A. • Sugar Land, TX</span>
                     </div>
                 </div>
                 <div class="review-card" style="padding: 2.5rem; background: rgba(255,255,255,0.05); border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
@@ -158,31 +179,32 @@
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                         <i data-feather="star" style="fill: #FFC107; width: 18px;"></i>
                     </div>
-                    <p class="lang-text" data-es="'The best hauling service in Houston. Fair pricing and they actually care about your property. Great family business.'" data-en="'The best hauling service in Houston. Fair pricing and they actually care about your property. Great family business.'">"The best hauling service in Houston. Fair pricing and they actually care about your property. Great family business."</p>
+                    <p class="lang-text" data-es="'Como contratista de techos en Pasadena, necesito que retiren los escombros rápido para seguir trabajando. Aguilar-Guilarte son mis socios de confianza. Sin dramas, solo resultados.'" data-en="'As a roofing contractor in Pasadena, I need debris removed fast to keep working. Aguilar-Guilarte are my trusted partners. No drama, just results.'">"Como contratista de techos en Pasadena, necesito que retiren los escombros rápido para seguir trabajando. Aguilar-Guilarte son mis socios de confianza. Sin dramas, solo resultados."</p>
                     <div style="display: flex; align-items: center; gap: 15px; margin-top: 20px;">
-                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #444, #1a1a1a); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900;">SM</div>
-                        <span style="font-weight: 900; color: white;">Sarah Miller • Katy, TX</span>
+                        <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900;">J</div>
+                        <span style="font-weight: 900; color: white;">Jose G. • Pasadena, TX</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="legal" class="glass-card">
-            <h2 class="lang-text" data-es="POLÍTICA LEGAL & CUMPLIMIENTO" data-en="LEGAL POLICY & COMPLIANCE" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 30px;">POLÍTICA LEGAL & CUMPLIMIENTO</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                <div style="border-left: 3px solid var(--texas-orange); padding-left: 20px;">
-                    <h4 class="lang-text" data-es="Seguros Continentales" data-en="Continental Insurance" style="margin-bottom: 10px;">Seguros Continentales</h4>
-                    <p class="lang-text" data-es="Nuestras operaciones están respaldadas por pólizas de responsabilidad civil comercial de cobertura total. Su propiedad está protegida desde el momento en que nuestra troka ingresa." data-en="Our operations are backed by full-coverage commercial liability policies. Your property is protected from the moment our truck enters.">Aguilar-Guilarte Haul & Harvest está plenamente registrada y asegurada bajo las leyes del estado de Texas y las ordenanzas locales de Houston. Mantenemos una cobertura de responsabilidad civil amplia para garantizar la protección total de su propiedad.</p>
+            <h2 class="lang-text" data-es="POLÍTICA LEGAL & SEGURIDAD TOTAL" data-en="LEGAL POLICY & TOTAL SAFETY" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 30px;">POLÍTICA LEGAL & SEGURIDAD TOTAL</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div style="border-left: 4px solid var(--texas-orange); padding-left: 25px;">
+                    <h4 class="lang-text" data-es="Cobertura y Seguros Comerciales" data-en="Coverage & Commercial Insurance" style="margin-bottom: 15px; color: var(--texas-orange);">Cobertura y Seguros Comerciales</h4>
+                    <p class="lang-text" data-es="Aguilar-Guilarte Haul & Harvest posee una cobertura de responsabilidad civil comercial de hasta $1M, diseñada específicamente para el manejo de carga pesada y protección de estructuras. Según las regulaciones de seguros de Texas, esta póliza cubre daños accidentales a la propiedad durante la fase de carga y transporte." data-en="Aguilar-Guilarte Haul & Harvest carries commercial liability coverage up to $1M, specifically designed for heavy load handling and structural protection. According to Texas insurance regulations, this policy covers accidental property damage during the loading and transportation phase.">Aguilar-Guilarte Haul & Harvest...</p>
                 </div>
-                <div style="border-left: 3px solid var(--texas-orange); padding-left: 20px;">
-                    <h4 class="lang-text" data-es="Cumplimiento TxDOT" data-en="TxDOT Compliance" style="margin-bottom: 10px;">Cumplimiento TxDOT</h4>
-                    <p class="lang-text" data-es="Cumplimos con todas las regulaciones del Departamento de Transporte de Texas para el traslado de carga pesada y disposición final en vertederos autorizados." data-en="We comply with all Texas Department of Transportation regulations for heavy load transportation and final disposal in authorized landfills.">Cumplimos con todas las regulaciones del Departamento de Transporte de Texas para el traslado de carga pesada y disposición final en vertederos autorizados.</p>
+                <div style="border-left: 4px solid var(--texas-orange); padding-left: 25px;">
+                    <h4 class="lang-text" data-es="Ordenanzas de Houston (Cap. 39)" data-en="Houston Ordinances (Ch. 39)" style="margin-bottom: 15px; color: var(--texas-orange);">Ordenanzas de Houston (Cap. 39)</h4>
+                    <p class="lang-text" data-es="Operamos en cumplimiento estricto con el Capítulo 39 de las Ordenanzas de la Ciudad de Houston sobre Residuos Sólidos. Todos los materiales recolectados son procesados en centros de reciclaje o vertederos autorizados por la TCEQ (Texas Commission on Environmental Quality), garantizando que no habrá 'illegal dumping' asociado a su propiedad." data-en="We operate in strict compliance with Chapter 39 of the Houston City Ordinances regarding Solid Waste. All collected materials are processed in recycling centers or landfills authorized by the TCEQ (Texas Commission on Environmental Quality), ensuring no 'illegal dumping' is associated with your property.">Operamos en cumplimiento...</p>
                 </div>
-                <div style="border-left: 3px solid var(--texas-orange); padding-left: 20px;">
-                    <h4 class="lang-text" data-es="Manejo HAZMAT" data-en="HAZMAT Management" style="margin-bottom: 10px;">Manejo HAZMAT</h4>
-                    <p class="lang-text" data-es="No estamos autorizados para químicos volátiles o residuos médicos. No insista por seguridad de nuestro equipo y su vecindario." data-en="We are not authorized for volatile chemicals or medical waste. Do not insist, for the safety of our team and your neighborhood.">No estamos autorizados para químicos volátiles o residuos médicos. No insista por seguridad de nuestro equipo y su vecindario.</p>
+                <div style="border-left: 4px solid var(--texas-orange); padding-left: 25px;">
+                    <h4 class="lang-text" data-es="Exención de Materiales Peligrosos" data-en="Hazardous Materials Waiver" style="margin-bottom: 15px; color: var(--texas-orange);">Exención de Materiales Peligrosos</h4>
+                    <p class="lang-text" data-es="De acuerdo con las leyes federales de la EPA, Aguilar-Guilarte no está autorizada para transportar materiales altamente inflamables, biológicos o radiactivos. El cliente certifica que el material a retirar no contiene sustancias tóxicas que requieran licencias HAZMAT especiales, protegiendo así la salud pública de Houston." data-en="According to federal EPA laws, Aguilar-Guilarte is not authorized to transport highly flammable, biological, or radioactive materials. The customer certifies that the material to be removed does not contain toxic substances requiring special HAZMAT licenses, thereby protecting Houston's public health.">De acuerdo con...</p>
                 </div>
             </div>
+            <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6; font-style: italic;" class="lang-text" data-es="*Términos y condiciones sujetos a cambios según las regulaciones estatales y locales vigentes en Houston, TX." data-en="*Terms and conditions subject to change based on current state and local regulations in Houston, TX.">*Términos y condiciones sujetos a cambios según las regulaciones estatales y locales vigentes en Houston, TX.</p>
         </section>
 
         <footer style="margin-top: 60px; text-align: center; color: white; padding-bottom: 50px;">
@@ -282,6 +304,11 @@
             if(chat.classList.contains('active')) {
                 document.getElementById('chatInput').focus();
             }
+        }
+
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobileDrawer');
+            drawer.classList.toggle('active');
         }
 
         async function sendMessage() {

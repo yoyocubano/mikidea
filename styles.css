@@ -117,6 +117,56 @@ body { background: var(--bg-white); color: var(--text-main); }
 }
 
 /* Responsividad Móvil */
+/* Responsive & Mobile Drawer GLAMOUR */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(25px);
+    z-index: 20000;
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 20px 0 60px rgba(0,0,0,0.5);
+}
+
+.mobile-drawer.active {
+    left: 0;
+}
+
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.drawer-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 950;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.drawer-item i {
+    color: var(--texas-orange);
+}
+
 @media (max-width: 1000px) {
     .mobile-top-bar { display: flex; }
     .sidebar { display: none; }
