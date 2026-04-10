@@ -46,30 +46,41 @@
     <div class="content-wrapper">
         <button class="lang-btn" onclick="toggleLang()" id="langBtn" style="position: fixed; top: 30px; right: 30px; z-index: 6000; background: rgba(0,0,0,0.7); color: white; padding: 12px 24px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.2); font-weight: 950; cursor: pointer; backdrop-filter: blur(10px);">EN</button>
 
-        <header id="home" class="hero-clean" style="min-height: 50vh;">
-            <p class="lang-text" data-es="Aguilar - Guilarte Haul & Harvest" data-en="Aguilar - Guilarte Haul & Harvest" style="text-transform: uppercase; font-weight: 950; color: #FF9800; letter-spacing: 3px; margin-bottom: 15px;">Aguilar - Guilarte Haul & Harvest</p>
-            <h1 class="lang-text" data-es="ELEGANCIA EN EL DESPEJE.<br>FUERZA EN LA COSECHA." data-en="CLEARANCE ELEGANCE.<br>STRENGTH IN HARVEST.">ELEGANCIA EN EL DESPEJE.<br>FUERZA EN LA COSECHA.</h1>
-            <p class="readable-text lang-text" data-es="Liberamos tu propiedad de escombros, muebles viejos y chatarra en tiempo récord. Tú recuperas tu espacio, nosotros el trabajo duro." data-en="We clear your property of debris, old furniture, and scrap in record time. You reclaim your space, we take the heavy load." style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Liberamos tu propiedad de escombros, muebles viejos y chatarra en tiempo récord. Tú recuperas tu espacio, nosotros el trabajo duro.</p>
-            <a href="tel:+17138784827" class="btn-cta lang-text" data-es="COTIZACIÓN GRATIS: (713) 878-4827" data-en="FREE ESTIMATE: (713) 878-4827" style="margin-top: 30px; font-size: 1.2rem;">COTIZACIÓN GRATIS: (713) 878-4827</a>
+        <header id="home" class="hero-clean" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 0 5%;">
+            <div class="hero-badge" style="background: rgba(239, 108, 0, 0.1); border: 1px solid var(--texas-orange); padding: 8px 20px; border-radius: 50px; color: var(--texas-orange); font-weight: 950; font-size: 0.8rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px;">EST. 2026 • HOUSTON, TX</div>
+            <p class="lang-text" data-es="Aguilar - Guilarte: La Nueva Fuerza del Hauling" data-en="Aguilar - Guilarte: The New Force in Hauling" style="text-transform: uppercase; font-weight: 950; color: #FFF; letter-spacing: 3px; margin-bottom: 5px; opacity: 0.8;">Aguilar - Guilarte: La Nueva Fuerza del Hauling</p>
+            <h1 class="lang-text" data-es="DOMINAMOS EL CAOS.<br>COSECHAMOS TU ESPACIO." data-en="WE DOMINATE THE CHAOS.<br>WE HARVEST YOUR SPACE." style="font-size: 5.5rem; line-height: 0.85; margin-bottom: 1.5rem;">DOMINAMOS EL CAOS.<br>COSECHAMOS TU ESPACIO.</h1>
+            <p class="readable-text lang-text" data-es="No solo retiramos basura; ejecutamos una limpieza industrial de alta gama con inventiva cubana y potencia americana. Muebles, escombros o metales: nada es demasiado grande para nuestro equipo." data-en="We don't just haul junk; we execute high-end industrial cleaning with Cuban spirit and American power. Furniture, debris, or metals: nothing is too big for our crew." style="text-shadow: 0 4px 15px rgba(0,0,0,0.6); font-size: 1.25rem; max-width: 650px;">No solo retiramos basura; ejecutamos una limpieza industrial de alta gama con inventiva cubana y potencia americana. Muebles, escombros o metales: nada es demasiado grande para nuestro equipo.</p>
+            
+            <div style="display: flex; gap: 20px; margin-top: 40px;" class="hero-btns">
+                <a href="tel:+17138784827" class="btn-cta lang-text" data-es="LLAMAR AHORA: (713) 878-4827" data-en="CALL NOW: (713) 878-4827" style="font-size: 1.1rem; padding: 1.2rem 2.8rem;">LLAMAR AHORA: (713) 878-4827</a>
+                <a href="#calc" class="nav-item lang-text" data-es="VER COTIZADOR" data-en="VIEW ESTIMATOR" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); color: white; padding: 1.2rem 2.5rem; border-radius: 16px; text-decoration: none; font-weight: 950; border: 1px solid rgba(255,255,255,0.2);">VER COTIZADOR</a>
+            </div>
         </header>
 
         <section id="services" class="glass-card">
             <h2 class="lang-text" data-es="NUESTROS SERVICIOS DE DESPEJE" data-en="OUR CLEARANCE SERVICES" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 50px;">NUESTROS SERVICIOS DE DESPEJE</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-                <div style="padding: 2.5rem; background: rgba(0,0,0,0.03); border-radius: 20px;">
-                    <i data-feather="trash-2" style="color: var(--texas-orange); margin-bottom: 15px;"></i>
-                    <h4 class="lang-text" data-es="Basura y Escombros" data-en="Junk & Debris">Basura y Escombros</h4>
-                    <p class="lang-text" data-es="Limpieza integral garantizada." data-en="Guaranteed full cleanup.">Limpieza integral garantizada.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <div class="service-panel" style="background: url('web/t1.png') center/cover; height: 450px; border-radius: 30px; position: relative; overflow: hidden; box-shadow: var(--shadow-pro);">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);">
+                        <i data-feather="trash-2" style="color: var(--texas-orange); margin-bottom: 10px;"></i>
+                        <h4 class="lang-text" data-es="Basura y Escombros" data-en="Junk & Debris" style="color: white; font-size: 1.8rem; margin-bottom: 10px;">Basura y Escombros</h4>
+                        <p class="lang-text" data-es="Limpieza profunda de propiedades residenciales y comerciales. Garantizamos orden en tiempo récord." data-en="Deep cleaning of residential and commercial properties. We guarantee order in record time." style="color: rgba(255,255,255,0.8);">Limpieza profunda de propiedades residenciales y comerciales.</p>
+                    </div>
                 </div>
-                <div style="padding: 2.5rem; background: rgba(0,0,0,0.03); border-radius: 20px;">
-                    <i data-feather="package" style="color: var(--texas-orange); margin-bottom: 15px;"></i>
-                    <h4 class="lang-text" data-es="Muebles y Equipos" data-en="Furniture & Appl.">Muebles y Equipos</h4>
-                    <p class="lang-text" data-es="Sin esfuerzo para ti." data-en="Zero effort for you.">Sin esfuerzo para ti.</p>
+                <div class="service-panel" style="background: url('web/t3.png') center/cover; height: 450px; border-radius: 30px; position: relative; overflow: hidden; box-shadow: var(--shadow-pro);">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);">
+                        <i data-feather="package" style="color: var(--texas-orange); margin-bottom: 10px;"></i>
+                        <h4 class="lang-text" data-es="Muebles y Equipos" data-en="Furniture & Appl." style="color: white; font-size: 1.8rem; margin-bottom: 10px;">Muebles y Equipos</h4>
+                        <p class="lang-text" data-es="Desalojo de muebles pesados y electrodomésticos viejos con cuidado extremo por su propiedad." data-en="Removal of heavy furniture and old appliances with extreme care for your property." style="color: rgba(255,255,255,0.8);">Desalojo de muebles pesados y electrodomésticos viejos.</p>
+                    </div>
                 </div>
-                <div style="padding: 2.5rem; background: rgba(0,0,0,0.03); border-radius: 20px;">
-                    <i data-feather="cpu" style="color: var(--texas-orange); margin-bottom: 15px;"></i>
-                    <h4 class="lang-text" data-es="Cosecha Metales" data-en="Metal Harvesting">Cosecha Metales</h4>
-                    <p class="lang-text" data-es="Recuperación rápida." data-en="Fast metal recovery.">Recuperación rápida.</p>
+                <div class="service-panel" style="background: url('web/t4.png') center/cover; height: 450px; border-radius: 30px; position: relative; overflow: hidden; box-shadow: var(--shadow-pro);">
+                    <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);">
+                        <i data-feather="cpu" style="color: var(--texas-orange); margin-bottom: 10px;"></i>
+                        <h4 class="lang-text" data-es="Cosecha Metales" data-en="Metal Harvesting" style="color: white; font-size: 1.8rem; margin-bottom: 10px;">Cosecha Metales</h4>
+                        <p class="lang-text" data-es="Extracción y reciclaje de chatarra ferrosa y metales industriales. Potenciamos el valor de su desecho." data-en="Extraction and recycling of ferrous scrap and industrial metals. We boost your waste's value." style="color: rgba(255,255,255,0.8);">Extracción y reciclaje de chatarra ferrosa y metales industriales.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -158,14 +169,18 @@
 
         <section id="legal" class="glass-card">
             <h2 class="lang-text" data-es="POLÍTICA LEGAL & CUMPLIMIENTO" data-en="LEGAL POLICY & COMPLIANCE" style="font-size: 2.5rem; font-weight: 950; margin-bottom: 30px;">POLÍTICA LEGAL & CUMPLIMIENTO</h2>
-            <div class="legal-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div>
-                    <h4 class="lang-text" data-es="Licencias y Responsabilidad" data-en="Licenses & Liability" style="color: var(--texas-orange); margin-bottom: 10px;">Licencias y Responsabilidad</h4>
-                    <p class="lang-text" data-es="Aguilar-Guilarte Haul & Harvest está plenamente registrada y asegurada bajo las leyes del estado de Texas y las ordenanzas locales de Houston. Mantenemos una cobertura de responsabilidad civil de $1,000,000 para garantizar la protección total de su propiedad durante nuestras operaciones." data-en="Aguilar-Guilarte Haul & Harvest is fully registered and insured under Texas laws and Houston local ordinances. We maintain a $1,000,000 liability coverage to ensure total protection of your property during our operations.">Aguilar-Guilarte Haul & Harvest...</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                <div style="border-left: 3px solid var(--texas-orange); padding-left: 20px;">
+                    <h4 class="lang-text" data-es="Seguros Continentales" data-en="Continental Insurance" style="margin-bottom: 10px;">Seguros Continentales</h4>
+                    <p class="lang-text" data-es="Nuestras operaciones están respaldadas por pólizas de responsabilidad civil comercial de cobertura total. Su propiedad está protegida desde el momento en que nuestra troka ingresa." data-en="Our operations are backed by full-coverage commercial liability policies. Your property is protected from the moment our truck enters.">Nuestras operaciones...</p>
                 </div>
-                <div>
-                    <h4 class="lang-text" data-es="Materiales Restringidos" data-en="Restricted Materials" style="color: var(--texas-orange); margin-bottom: 10px;">Materiales Restringidos</h4>
-                    <p class="lang-text" data-es="De acuerdo con las regulaciones de la EPA y el TCEQ, no recolectamos ni transportamos materiales peligrosos (Hazmat), solventes químicos, residuos médicos o tanques de combustible presurizados sin un acuerdo de manejo especial previo. La seguridad ambiental es nuestra prioridad." data-en="In accordance with EPA and TCEQ regulations, we do not collect or transport hazardous materials (Hazmat), chemical solvents, medical waste, or pressurized fuel tanks without a prior special handling agreement. Environmental safety is our priority.">De acuerdo con...</p>
+                <div style="border-left: 3px solid var(--texas-orange); padding-left: 20px;">
+                    <h4 class="lang-text" data-es="Cumplimiento TxDOT" data-en="TxDOT Compliance" style="margin-bottom: 10px;">Cumplimiento TxDOT</h4>
+                    <p class="lang-text" data-es="Cumplimos con todas las regulaciones del Departamento de Transporte de Texas para el traslado de carga pesada y disposición final en vertederos autorizados." data-en="We comply with all Texas Department of Transportation regulations for heavy load transportation and final disposal in authorized landfills.">Cumplimos...</p>
+                </div>
+                <div style="border-left: 3px solid var(--texas-orange); padding-left: 20px;">
+                    <h4 class="lang-text" data-es="Manejo HAZMAT" data-en="HAZMAT Management" style="margin-bottom: 10px;">Manejo HAZMAT</h4>
+                    <p class="lang-text" data-es="No estamos autorizados para químicos volátiles o residuos médicos. No insista por seguridad de nuestro equipo y su vecindario." data-en="We are not authorized for volatile chemicals or medical waste. Do not insist, for the safety of our team and your neighborhood.">No estamos autorizados...</p>
                 </div>
             </div>
         </section>
