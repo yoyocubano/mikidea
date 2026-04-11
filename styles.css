@@ -547,3 +547,21 @@ body { background: var(--bg-white); color: var(--text-main); }
     background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
     pointer-events: none;
 }
+
+/* ==========================================================================
+   AG INDUSTRIAL BLINDAJE DE ESCALA (LOGO ONLY)
+   ========================================================================== */
+img[src*="logo"], .brand-logo, .logo-corner img {
+    height: auto !important;
+    max-height: 55px !important; /* Límite estricto para móvil y barra superior */
+    width: auto !important;
+    object-fit: contain !important;
+    max-width: 140px !important; /* Límite estricto para Sidebar */
+}
+
+@media (min-width: 1001px) {
+    .logo-corner img {
+        max-height: 100px !important;
+        max-width: 160px !important;
+    }
+}
