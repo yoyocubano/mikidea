@@ -220,9 +220,12 @@
     </div>
 
     <div class="ai-chat-window" id="aiChat">
-        <div class="ai-chat-header">
-            <i data-feather="terminal" style="width: 20px;"></i>
-            <h3 class="lang-text" data-es="Aguilar-Guilarte AI" data-en="Aguilar-Guilarte AI">Aguilar-Guilarte AI</h3>
+        <div class="ai-chat-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <i data-feather="terminal" style="width: 20px;"></i>
+                <h3 class="lang-text" data-es="Aguilar-Guilarte AI" data-en="Aguilar-Guilarte AI">Aguilar-Guilarte AI</h3>
+            </div>
+            <i data-feather="x" onclick="toggleChat()" style="cursor: pointer; width: 20px;"></i>
         </div>
         <div class="ai-chat-messages" id="chatMsgs">
             <div class="chat-bubble ai-bubble lang-text" data-es="¡Hola! Soy el asistente neuronal de Aguilar-Guilarte. ¿Cómo puedo ayudarte hoy con tu despeje en Houston?" data-en="Hello! I am the neural assistant of Aguilar-Guilarte. How can I help you today with your clearance in Houston?">

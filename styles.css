@@ -266,6 +266,35 @@ body { background: var(--bg-white); color: var(--text-main); }
     }
     
     .pc-only-lang { display: none !important; }
+
+    /* Rebeca-Standard AI Chat Mobile UI */
+    .ai-chat-window {
+        width: 100% !important;
+        height: 100% !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        border-radius: 0 !important;
+        z-index: 20002 !important;
+    }
+    .ai-chat-launcher {
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 55px !important;
+        height: 55px !important;
+    }
+    .ai-chat-messages {
+        flex: 1 !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 15px !important;
+    }
+    .ai-chat-header {
+        padding: 15px !important;
+    }
+    .ai-chat-input-area {
+        padding: 15px !important;
+        padding-bottom: env(safe-area-inset-bottom, 20px) !important;
+    }
 }
 
 /* AI Chat Integration Styles */
